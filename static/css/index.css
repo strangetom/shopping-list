@@ -1,0 +1,154 @@
+:root {
+  color-scheme: dark;
+  --bg: #1d2021;
+  --bg-s: #32302f;
+  --bg-1: #3c3836;
+  --bg-2: #504945;
+  --fg: #fbf1c7;
+  --fg-1: #a89984;
+  --gray: #a89984;
+  --red: #cc241d;
+  --red-alt: #fb4934;
+  --green: #98971a;
+  --green-alt: #b8bb26;
+  --yellow: #d79921;
+  --yellow-alt: #fabd2f;
+  --blue: #458588;
+  --blue-alt: #83a598;
+  --purple: #b16286;
+  --purple-alt: #d3869b;
+  --orange: #d65d0e;
+  --orange-alt: #fe8019;
+  --aqua: #689d6a;
+  --aqua-alt: #8ec07c;
+}
+
+body {
+  font-family: sans-serif;
+  color: var(--fg);
+  background-color: var(--bg); 
+  margin: 0 auto;
+  max-width: 80ch;
+  -webkit-font-smoothing: antialiased;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--bg-s);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}
+h1 {
+  margin: 1rem;
+  font-weight: 400;
+}
+
+#list {
+  margin-top: 4rem;
+}
+h2 {
+  font-weight: 400;
+  margin: 0;
+  padding: .5rem;
+  font-size: .8rem;
+  background-color: var(--bg-1);
+  border-top: 1px solid var(--bg-2);
+  border-bottom: 1px solid var(--bg-2);
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.icon {
+  vertical-align: middle;
+}
+
+.item {
+  background-color: var(--bg-s);
+}
+.item table {
+  width: 100%;
+  height: 3.8rem;
+  border-spacing: 0;
+  border-top: 1px solid var(--bg-2);
+  border-bottom: 1px solid var(--bg-2);
+}
+.item td:first-of-type {
+  width: 40px;
+  padding: 0 .5rem;
+}
+.item td:last-of-type {
+  width: 10%;
+  padding-right: 1rem;
+}
+h4 {
+  margin: 0;
+}
+.item-details {
+  font-style: italic;
+}
+
+.done {
+  background-color: var(--bg);
+  filter: brightness(0.3);
+}
+.done h4 {
+  text-decoration: line-through 2px;
+  font-style: italic;
+}
+
+#edit-item-dialog {
+  width: 80%;
+  max-width: 70ch;
+  background-color: var(--bg);
+  border: 5px double var(--gray);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}
+#edit-item-dialog::backdrop {
+  /* Backdrop does not inherit from any element so cannot use CSS variables.
+  https://fullscreen.spec.whatwg.org/#::backdrop-pseudo-element
+  */
+  background-color: #32302f66;
+  backdrop-filter: blur(2px);
+}
+#edit-item-dialog h3 {
+  margin: 0 0 .5rem 0;
+}
+.edit-input label {
+  margin-top: .5rem;
+  display: block;
+  font-size: .8rem;
+}
+.edit-input input,
+.edit-input select {
+  box-sizing: border-box;
+  font-size: 1rem;
+  border: none;
+  border-radius: .25rem;
+  padding: .5rem;
+  background-color: var(--bg-2);
+  width: 100%;
+  word-break: break-word;
+}
+.edit-input-dual {
+  display: flex;
+  gap: 1rem;
+}
+
+#edit-item-dialog .buttons {
+  margin-top: 1rem;
+  text-align: right;
+}
+#edit-item-dialog button {
+  font-family: sans-serif;
+  text-align: center;
+  border: 1px solid var(--purple-alt);
+  border-radius: .25rem;
+  padding: .5rem .8rem;
+  margin: 0 .2rem;
+  background-color: var(--purple);
+}

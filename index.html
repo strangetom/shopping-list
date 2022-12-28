@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="Description" content="Shopping list">
+        <meta name="viewport" content="width=device-width">
+        <title>Shopping List</title>
+        <link rel="stylesheet" type="text/css" href="./static/css/index.css">
+        <script src="./static/js/index.js"></script>
+    </head>
+    <body>
+
+        <section id="header">
+            <h1>Shopping List</h1>
+        </section>
+
+        <section id="list">
+        </section>
+
+        <dialog id="edit-item-dialog">
+            <form method="dialog">
+                <h3>Edit item</h3>
+
+                <div class="edit-input">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" autocomplete="off" value="">
+                </div>
+                <div class="edit-input-dual">
+                    <div class="edit-input">
+                        <label for="quantity">Quantity</label>
+                        <input type="text" id="quantity" name="quantity" autocomplete="off" value="">
+                    </div>
+                    <div class="edit-input">
+                        <label for="unit">Unit</label>
+                        <select id="units" name="unit">
+                            <option value=""></option>
+                            <option value="g">g</option>
+                            <option value="kg">kg</option>
+                            <option value="ml">ml</option>
+                            <option value="L">L</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="edit-input">
+                    <label for="notes">Notes</label>
+                    <input type="text" id="notes" name="notes" autocomplete="off" value="">
+                </div>
+
+                <div class="buttons">
+                    <button value="cancel">Cancel</button>
+                    <button value="submit">Edit</button>
+                </div>
+            </form>
+        </dialog>
+
+    </body>
+</html>
