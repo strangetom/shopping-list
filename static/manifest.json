@@ -22,10 +22,10 @@
       "sizes": "640x640",
       "type": "image/png",
       "purpose": "maskable"
-    }],  
+    }],
   "lang": "en-GB",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#3c3836",
-  "theme_color": "#3c3836",
+  "theme_color": "#3c3836"
 }
