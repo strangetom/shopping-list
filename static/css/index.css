@@ -4,6 +4,7 @@
   --bg-s: #32302f;
   --bg-1: #3c3836;
   --bg-2: #504945;
+  --bg-4: #7c6f64;
   --fg: #fbf1c7;
   --fg-1: #a89984;
   --gray: #a89984;
@@ -64,18 +65,48 @@ h1 {
   margin-top: 4rem;
 }
 h2 {
-  font-weight: 400;
+  font-weight: normal;
   margin: 0;
   padding: .5rem;
   font-size: .8rem;
-  background-color: var(--bg-1);
+  background-color: var(--bg);
   border-top: 1px solid var(--bg-2);
-  border-bottom: 1px solid var(--bg-2);
+  background-image: url("/static/img/page-bg-dark.svg");
 }
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+.fruits-vegetables {
+  border-bottom: 2px solid var(--green);
+}
+.meat-fish {
+ border-bottom: 2px solid var(--red);
+}
+.bread-pastries {
+ border-bottom: 2px solid var(--bg-4); 
+}
+.ingredients-spices {
+  border-bottom: 2px solid var(--yellow);
+}
+.snacks-beverages {
+  border-bottom: 2px solid var(--purple);
+}
+.refrigerated-frozen {
+  border-bottom: 2px solid var(--blue);
+}
+.other-food-items {
+  border-bottom: 2px solid var(--blue-alt);
+}
+.non-food-items {
+  border-bottom: 2px solid var(--orange);
+}
+.medicine {
+  border-bottom: 2px solid var(--aqua);
+}
+.uncategorised {
+  border-bottom: 2px solid var(--gray);
 }
 
 .icon {

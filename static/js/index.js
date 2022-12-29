@@ -1,14 +1,15 @@
 var shoppingList;
 const categoryColours = {
-    "Fruits & Vegetables": { light: "#b8bb26", dark: "#98971a" },
-    "Break & Pastries": { light: "#fabd2f", dark: "#d79921" },
-    "Ingredients & Spices": { light: "#fabd2f", dark: "#d79921" },
-    "Snacks & Beverages": { light: "#d3869b", dark: "#b16286" },
-    "Meat & Fish": { light: "#fb4934", dark: "#cc241d" },
-    "Refrigerated & Frozen": { light: "#83a598", dark: "#458588" },
-    "Non-food Items": { light: "#fe8019", dark: "#d65d0e" },
-    Medicine: { light: "#8ec07c", dark: "#689d6a" },
-    Uncategorised: { light: "#ebdbb2", dark: "#a89984" },
+    "Fruits & Vegetables": "#98971a",
+    "Bread & Pastries": "#7c6f64",
+    "Ingredients & Spices": "#d79921",
+    "Snacks & Beverages": "#b16286",
+    "Meat & Fish": "#cc241d",
+    "Refrigerated & Frozen": "#458588",
+    "Other Food Items": "#83a598",
+    "Non-food Items": "#d65d0e",
+    Medicine: "#689d6a",
+    Uncategorised: "#a89984",
 };
 class ShoppingList {
     constructor() {
@@ -71,6 +72,7 @@ function populateList() {
     for (const category of sorted_categories) {
         let h2 = document.createElement("h2");
         h2.innerText = category;
+        h2.classList.add(category.toLowerCase().replaceAll(" & ", "-").replaceAll(" ", "-"));
         listEl.appendChild(h2);
         let ul = document.createElement("ul");
         listEl.appendChild(ul);
@@ -97,7 +99,7 @@ class ListItem extends HTMLLIElement {
         table.appendChild(tr);
         let td_left = document.createElement("td");
         let color = categoryColours[this.data.category];
-        let svg = createSVG(this.data.item.slice(0, 1).toUpperCase(), color.light, color.dark);
+        let svg = createSVG(this.data.item.slice(0, 1).toUpperCase(), color);
         td_left.appendChild(svg);
         tr.appendChild(td_left);
         let td_mid = document.createElement("td");
@@ -205,7 +207,7 @@ function addNewItem() {
         populateList();
     }
 }
-function createSVG(letter, text_colour, bg_colour) {
+function createSVG(letter, bg_colour) {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
@@ -214,13 +216,13 @@ function createSVG(letter, text_colour, bg_colour) {
     svg.classList.add("icon");
     circle.setAttribute("cx", "20");
     circle.setAttribute("cy", "20");
-    circle.setAttribute("r", "20");
+    circle.setAttribute("r", "18");
     circle.setAttribute("fill", bg_colour);
     text.setAttribute("x", "50%");
-    text.setAttribute("y", "80%");
+    text.setAttribute("y", "70%");
     text.setAttribute("text-anchor", "middle");
-    text.setAttribute("fill", text_colour);
-    text.setAttribute("font-size", "35px");
+    text.setAttribute("fill", "#fff");
+    text.setAttribute("font-size", "23px");
     text.textContent = letter;
     svg.appendChild(circle);
     svg.appendChild(text);
