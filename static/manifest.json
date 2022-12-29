@@ -1,4 +1,4 @@
-	{
+{
   "name": "Shopping List",
   "short_name": "Shopping List",
   "icons": [{
@@ -28,5 +28,4 @@
   "display": "standalone",
   "background_color": "#3c3836",
   "theme_color": "#3c3836",
-  }
 }
