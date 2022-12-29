@@ -29,6 +29,7 @@ body {
   color: var(--fg);
   background-color: var(--bg); 
   margin: 0 auto;
+  margin-bottom: 5rem;
   max-width: 80ch;
   -webkit-font-smoothing: antialiased;
 }
@@ -136,6 +137,12 @@ h4 {
 }
 .item-details {
   font-style: italic;
+}
+.item button {
+  border: none;
+  background: none;
+  height: 40px;
+  width: 40px;
 }
 
 .done {
