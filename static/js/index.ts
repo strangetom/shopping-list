@@ -4,7 +4,10 @@ interface ItemData {
   units: string;
   notes: string;
   category: string;
+  done: boolean;
 }
+
+var shoppingList;
 
 const categoryColours = {
   "Fruits & Vegetables": { light: "#b8bb26", dark: "#98971a" },
@@ -15,71 +18,95 @@ const categoryColours = {
   "Refrigerated & Frozen": { light: "#83a598", dark: "#458588" },
   "Non-food Items": { light: "#fe8019", dark: "#d65d0e" },
   Medicine: { light: "#8ec07c", dark: "#689d6a" },
+  Uncategorised: { light: "#ebdbb2", dark: "#a89984" },
 };
 
-var currentList = [
-  {
-    item: "Plain flour",
-    quantity: "200",
-    units: "g",
-    notes: "",
-    category: "Ingredients & Spices",
-    done: false,
-  },
-  {
-    item: "Black pepper",
-    quantity: "",
-    units: "",
-    notes: "",
-    category: "Ingredients & Spices",
-    done: false,
-  },
-  {
-    item: "Caster sugar",
-    quantity: "500",
-    units: "g",
-    notes: "Golden",
-    category: "Ingredients & Spices",
-    done: false,
-  },
-  {
-    item: "Honey",
-    quantity: "",
-    units: "",
-    notes: "",
-    category: "Ingredients & Spices",
-    done: false,
-  },
-  {
-    item: "Apples",
-    quantity: "",
-    units: "",
-    notes: "",
-    category: "Fruits & Vegetables",
-    done: false,
-  },
-  {
-    item: "Tenderstem brocolli",
-    quantity: "200",
-    units: "g",
-    notes: "",
-    category: "Fruits & Vegetables",
-    done: false,
-  },
-  {
-    item: "Onions",
-    quantity: "4",
-    units: "",
-    notes: "",
-    category: "Fruits & Vegetables",
-    done: false,
-  },
-];
+class ShoppingList {
+  currentList;
+  constructor() {
+    let storedList = localStorage.getItem("currentList");
+    if (storedList != null) {
+      this.currentList = JSON.parse(storedList);
+    } else {
+      this.currentList = [];
+    }
+  }
+
+  /**
+   * Save current list to local storage
+   */
+  save() {
+    localStorage.setItem("currentList", JSON.stringify(this.currentList));
+  }
+
+  /**
+   * Add new item to list
+   * @param {ItemData} item New item to add to list
+   */
+  addItem(data: ItemData) {
+    this.currentList.push(data);
+    this.save();
+  }
+
+  /**
+   * Update item in list
+   * @param {ItemData} data  New item data for item
+   * @param {number}   index Index of item in list
+   */
+  updateItem(data: ItemData, index: number) {
+    this.currentList[index] = data;
+    this.save();
+  }
+
+  /**
+   * Toggle done flag for item
+   * @param {number} index Index of item to toggle done flag
+   */
+  toggleDone(index: number) {
+    this.currentList[index].done = !this.currentList[index].done;
+    this.save();
+  }
+
+  /**
+   * Purge items marked as done from list
+   */
+  purgeDone() {
+    let purgedList = this.currentList.filter((item) => !item.done);
+    this.currentList = purgedList;
+    this.save();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  customElements.define("list-item", ListItem, {
+    extends: "li",
+  });
+  shoppingList = new ShoppingList();
+  shoppingList.purgeDone();
+  populateList();
+
+  let addBtn: HTMLButtonElement = document.querySelector("#fab");
+  let addModal: HTMLDialogElement = document.querySelector("#new-item-dialog");
+  addBtn.addEventListener("click", () => {
+    (addModal.querySelector("#name") as HTMLInputElement).value = "";
+    addModal.showModal();
+  });
+  addModal.addEventListener("close", addNewItem);
+  addModal.addEventListener("click", (event) => {
+    if ((event.target as HTMLElement).nodeName === "DIALOG") {
+      addModal.returnValue = "cancel";
+      addModal.close();
+    }
+  });
+});
 
 function populateList() {
   let listEl = document.querySelector("#list");
+  listEl.replaceChildren();
 
-  let categories: Set<string> = new Set(currentList.map((i) => i.category));
+  let categories: Set<string> = new Set(
+    shoppingList.currentList.map((i) => i.category)
+  );
   let sorted_categories = Array.from(categories).sort();
 
   for (const category of sorted_categories) {
@@ -91,10 +118,8 @@ function populateList() {
     let ul = document.createElement("ul");
     listEl.appendChild(ul);
 
-    // Create li for each item
-
     // Filter
-    let items = currentList
+    let items = shoppingList.currentList
       .map((data, idx) => ({ data, idx }))
       .filter((el) => el.data.category == category);
     for (const item of items) {
@@ -110,7 +135,7 @@ class ListItem extends HTMLLIElement {
   data: ItemData; // The list item data: item, quantity, units, notes
   index: number; // The index of this item in the current list storage array
 
-  constructor(data, index) {
+  constructor(data: ItemData, index: number) {
     super();
 
     this.data = data;
@@ -126,7 +151,11 @@ class ListItem extends HTMLLIElement {
 
     let td_left = document.createElement("td");
     let color = categoryColours[this.data.category];
-    let svg = createSVG(this.data.item.slice(0, 1), color.dark, color.light);
+    let svg = createSVG(
+      this.data.item.slice(0, 1).toUpperCase(),
+      color.light,
+      color.dark
+    );
     td_left.appendChild(svg);
     tr.appendChild(td_left);
 
@@ -162,9 +191,10 @@ class ListItem extends HTMLLIElement {
    */
   updateData() {
     let h4 = this.querySelector("h4");
-    let note = this.querySelector(".note");
-    let quantity_units = this.querySelector(".quantity-units");
-    let item_details = this.querySelector(".item-details");
+    let note = this.querySelector(".note") as HTMLElement;
+    let category = this.querySelector(".category") as HTMLSelectElement;
+    let quantity_units = this.querySelector(".quantity-units") as HTMLElement;
+    let item_details = this.querySelector(".item-details") as HTMLDivElement;
 
     h4.innerText = this.data.item;
     note.innerText = this.data.notes;
@@ -188,8 +218,9 @@ class ListItem extends HTMLLIElement {
    * Toggle an item's "done" state.
    */
   done() {
-    currentList[this.index].done = !currentList[this.index].done;
-
+    // No need to set done within this class as this.data is a
+    // reference to the item shoppingList.currentList
+    shoppingList.toggleDone(this.index);
     this.classList.toggle("done");
   }
 
@@ -197,6 +228,11 @@ class ListItem extends HTMLLIElement {
    * Show the edit dialog and set the input values to the current item's data.
    */
   showEditDialog() {
+    // Only show edit dialog if item is not done
+    if (this.data.done) {
+      return;
+    }
+
     /* 
     First clone the edit modal and replace the existing one with the clone
     Cloning the element does not copy the event listeners, which is what we're trying to acheive.
@@ -211,17 +247,19 @@ class ListItem extends HTMLLIElement {
       this.data.item;
     (editModal.querySelector("#quantity") as HTMLInputElement).value =
       this.data.quantity;
-    (editModal.querySelector("#units") as HTMLInputElement).value =
+    (editModal.querySelector("#units") as HTMLSelectElement).value =
       this.data.units;
     (editModal.querySelector("#notes") as HTMLInputElement).value =
       this.data.notes;
+    (editModal.querySelector("#category") as HTMLSelectElement).value =
+      this.data.category;
 
     editModal.showModal();
 
     // Add event listeners to for closing the dialog
     editModal.addEventListener("close", this.edit.bind(this));
     editModal.addEventListener("click", (event) => {
-      if (event.target.nodeName === "DIALOG") {
+      if ((event.target as HTMLElement).nodeName === "DIALOG") {
         editModal.returnValue = "cancel";
         editModal.close();
       }
@@ -244,24 +282,45 @@ class ListItem extends HTMLLIElement {
         editModal.querySelector("#quantity") as HTMLInputElement
       ).value;
       this.data.units = (
-        editModal.querySelector("#units") as HTMLInputElement
+        editModal.querySelector("#units") as HTMLSelectElement
       ).value;
       this.data.notes = (
         editModal.querySelector("#notes") as HTMLInputElement
       ).value;
+      let previous_category = this.data.category;
+      this.data.category = (
+        editModal.querySelector("#category") as HTMLSelectElement
+      ).value;
+
       this.updateData();
+      shoppingList.save();
+
+      if (previous_category != this.data.category) {
+        populateList();
+      }
     }
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  customElements.define("list-item", ListItem, {
-    extends: "li",
-  });
-  populateList();
-});
+function addNewItem() {
+  let addModal: HTMLDialogElement = document.querySelector("#new-item-dialog");
+  if (addModal.returnValue == "submit") {
+    let name = (addModal.querySelector("#name") as HTMLInputElement).value;
+    let newItem = {
+      item: name,
+      quantity: "",
+      units: "",
+      notes: "",
+      category: "Uncategorised",
+      done: false,
+    };
 
-function createSVG(letter, text_colour, bg_colour) {
+    shoppingList.addItem(newItem);
+    populateList();
+  }
+}
+
+function createSVG(letter: string, text_colour: string, bg_colour: string) {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   const circle = document.createElementNS(
     "http://www.w3.org/2000/svg",

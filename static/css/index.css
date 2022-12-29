@@ -45,6 +45,21 @@ h1 {
   font-weight: 400;
 }
 
+#fab {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: none;
+  border-radius: 3rem;
+  background-color: var(--fg);
+  
+  color: var(--bg-1);
+  font-size: 2.5rem;
+  font-weight: 100;
+}
+
 #list {
   margin-top: 4rem;
 }
@@ -101,21 +116,21 @@ h4 {
   font-style: italic;
 }
 
-#edit-item-dialog {
+.dialog {
   width: 80%;
   max-width: 70ch;
   background-color: var(--bg);
   border: 5px double var(--gray);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
 }
-#edit-item-dialog::backdrop {
+.dialog::backdrop {
   /* Backdrop does not inherit from any element so cannot use CSS variables.
   https://fullscreen.spec.whatwg.org/#::backdrop-pseudo-element
   */
   background-color: #32302f66;
   backdrop-filter: blur(2px);
 }
-#edit-item-dialog h3 {
+.dialog h3 {
   margin: 0 0 .5rem 0;
 }
 .edit-input label {
@@ -139,11 +154,11 @@ h4 {
   gap: 1rem;
 }
 
-#edit-item-dialog .buttons {
+.dialog .buttons {
   margin-top: 1rem;
   text-align: right;
 }
-#edit-item-dialog button {
+.dialog button {
   font-family: sans-serif;
   text-align: center;
   border: 1px solid var(--purple-alt);

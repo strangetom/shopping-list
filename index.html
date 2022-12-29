@@ -17,7 +17,11 @@
         <section id="list">
         </section>
 
-        <dialog id="edit-item-dialog">
+        <button id="fab">
+            +
+        </button>
+
+        <dialog class="dialog" id="edit-item-dialog">
             <form method="dialog">
                 <h3>Edit item</h3>
 
@@ -45,10 +49,40 @@
                     <label for="notes">Notes</label>
                     <input type="text" id="notes" name="notes" autocomplete="off" value="">
                 </div>
+                <div class="edit-input">
+                    <label for="category">Category</label>
+                    <select id="category" name="category">
+                        <option value="Uncategorised"></option>
+                        <option value="Bread & Pastries">Bread & Pastries</option>
+                        <option value="Fruits & Vegetables">Fruits & Vegetables</option>
+                        <option value="Ingredients & Spices">Ingredients & Spices</option>
+                        <option value="Meat & Fish">Meat & Fish</option>
+                        <option value="Medicine">Medicine</option>
+                        <option value="Non-food Items">Non-food Items</option>
+                        <option value="Refrigerated & Frozen">Refrigerated & Frozen</option>
+                        <option value="Snacks & Beverages">Snacks & Beverages</option>
+                    </select>
+                </div>
 
                 <div class="buttons">
                     <button value="cancel">Cancel</button>
                     <button value="submit">Edit</button>
+                </div>
+            </form>
+        </dialog>
+
+        <dialog class="dialog" id="new-item-dialog">
+            <form method="dialog">
+                <h3>New item</h3>
+
+                <div class="edit-input">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" autocomplete="off" value="">
+                </div>
+
+                <div class="buttons">
+                    <button value="cancel">Cancel</button>
+                    <button value="submit">Add</button>
                 </div>
             </form>
         </dialog>
