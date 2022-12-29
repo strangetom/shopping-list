@@ -160,6 +160,7 @@ h4 {
   background-color: var(--bg);
   border: 5px double var(--gray);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  margin-top: 5vh;
 }
 .dialog::backdrop {
   /* Backdrop does not inherit from any element so cannot use CSS variables.
