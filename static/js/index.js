@@ -1,4 +1,5 @@
 var shoppingList;
+const ITEM_PATTERN = /(?<quantity>[\d\.]+\s?)?(?<unit>(g|kg|ml|L)\s?)?(?<name>.*)/;
 const categoryColours = {
     "Fruits & Vegetables": "#98971a",
     "Bread & Pastries": "#7c6f64",
@@ -192,14 +193,24 @@ class ListItem extends HTMLLIElement {
         }
     }
 }
+function titleCase(text) {
+    let str = text
+        .toLowerCase()
+        .split(" ")
+        .map((word) => {
+        return word.replace(word[0], word[0].toUpperCase());
+    });
+    return str.join(" ");
+}
 function addNewItem() {
     let addModal = document.querySelector("#new-item-dialog");
     if (addModal.returnValue == "submit") {
         let name = addModal.querySelector("#name").value;
+        let regexParts = ITEM_PATTERN.exec(name);
         let newItem = {
-            item: name,
-            quantity: "",
-            units: "",
+            item: titleCase(regexParts.groups.name),
+            quantity: regexParts.groups.quantity || "",
+            units: regexParts.groups.unit || "",
             notes: "",
             category: "Uncategorised",
             done: false,
