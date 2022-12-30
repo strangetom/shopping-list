@@ -157,6 +157,7 @@ class ListItem extends HTMLLIElement {
     let td_left = document.createElement("td");
     let color = categoryColours[this.data.category];
     let svg = createSVG(this.data.item.slice(0, 1).toUpperCase(), color);
+    svg.addEventListener("click", this.done.bind(this));
     td_left.appendChild(svg);
     tr.appendChild(td_left);
 
