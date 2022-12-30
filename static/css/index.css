@@ -196,6 +196,8 @@ h4 {
 .dialog .buttons {
   margin-top: 1rem;
   text-align: right;
+  display: flex;
+  flex-direction: row-reverse;
 }
 .dialog button {
   font-family: sans-serif;
