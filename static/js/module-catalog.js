@@ -23,12 +23,12 @@ export class Catalog {
         let sortedFilteredItems = Object.entries(filteredItems).sort(function compareFn(a, b) {
             return b[1].modified - a[1].modified;
         });
-        return Object.fromEntries(sortedFilteredItems);
+        return Object.fromEntries(sortedFilteredItems.slice(0, 10));
     }
-    update(item, category) {
-        this.catalog[item] = {
+    update(item, categoryId) {
+        this.catalog[item.toLowerCase()] = {
             modified: Date.now(),
-            category: category,
+            category: categoryId,
         };
         this.save();
     }

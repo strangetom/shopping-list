@@ -39,18 +39,18 @@ export class Catalog {
       }
     );
 
-    return Object.fromEntries(sortedFilteredItems);
+    return Object.fromEntries(sortedFilteredItems.slice(0, 10));
   }
 
   /**
    * Update item last modified time and category in catalog.
-   * @param {string} item     Item name
-   * @param {number} category Item category
+   * @param {string} item       Item name
+   * @param {number} categoryId Item category
    */
-  update(item: string, category: number) {
-    this.catalog[item] = {
+  update(item: string, categoryId: number) {
+    this.catalog[item.toLowerCase()] = {
       modified: Date.now(),
-      category: category,
+      category: categoryId,
     };
     this.save();
   }

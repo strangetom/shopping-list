@@ -25,6 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
   customElements.define("list-item", ListItem, {
     extends: "li",
   });
+  customElements.define("suggestion-item", SuggestionItem, {
+    extends: "li",
+  });
   shoppingList = new ShoppingList();
   shoppingList.purgeDone();
   populateList();
@@ -33,6 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let addModal: HTMLDialogElement = document.querySelector("#new-item-dialog");
   addBtn.addEventListener("click", () => {
     (addModal.querySelector("#name") as HTMLInputElement).value = "";
+    (
+      addModal.querySelector("#suggestions") as HTMLInputElement
+    ).replaceChildren();
     addModal.showModal();
   });
   addModal.addEventListener("close", addNewItem);
@@ -44,11 +50,26 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   let addItemInput = addModal.querySelector("#name");
   addItemInput.addEventListener("input", (e) => {
+    let suggestiondEl = document.querySelector(
+      "#suggestions"
+    ) as HTMLUListElement;
     let fragment = (e.target as HTMLInputElement).value;
     let regexParts = ITEM_PATTERN.exec(fragment);
     if (regexParts.groups.name != "") {
       let suggestions = CATALOG.suggest(regexParts.groups.name);
-      console.log(suggestions);
+
+      if (Object.keys(suggestions).length > 0) {
+        suggestiondEl.replaceChildren();
+
+        for (let suggest of Object.entries(suggestions)) {
+          let el = new SuggestionItem(
+            suggest[0],
+            suggest[1].modified,
+            suggest[1].category
+          );
+          suggestiondEl.appendChild(el);
+        }
+      }
     }
   });
 });
@@ -174,6 +195,7 @@ class ListItem extends HTMLLIElement {
     // No need to set done within this class as this.data is a
     // reference to the item shoppingList.currentList
     shoppingList.toggleDone(this.index);
+    CATALOG.update(this.data.item, categoryInfo[this.data.category].id);
     this.classList.toggle("done");
   }
 
@@ -255,6 +277,107 @@ class ListItem extends HTMLLIElement {
   }
 }
 
+class SuggestionItem extends HTMLLIElement {
+  category;
+  item;
+  time;
+
+  constructor(item: string, time: number, categoryId: number) {
+    super();
+
+    this.item = item;
+    this.category = Object.entries(categoryInfo).filter(
+      (el) => el[1].id == categoryId
+    )[0][0];
+    this.time = time;
+
+    this.classList.add("suggestion");
+    this.dataset.item = this.item;
+    this.dataset.category = this.category;
+
+    this.addEventListener("click", (e) => {
+      let addModal: HTMLDialogElement =
+        document.querySelector("#new-item-dialog");
+      addModal.returnValue = "cancel";
+      addModal.close();
+      addNewItemSuggestion(e);
+    });
+
+    let table = document.createElement("table");
+    this.appendChild(table);
+
+    let tr = document.createElement("tr");
+    table.appendChild(tr);
+
+    let td_left = document.createElement("td");
+    let color = categoryInfo[this.category].color;
+    let svg = createSVG("", color);
+    td_left.appendChild(svg);
+    tr.appendChild(td_left);
+
+    let td_right = document.createElement("td");
+    tr.appendChild(td_right);
+    let h4 = document.createElement("h4");
+    h4.innerText = titleCase(this.item);
+    td_right.appendChild(h4);
+    let last_bought = document.createElement("small");
+    last_bought.innerText = this.readableTime(this.time);
+    td_right.appendChild(last_bought);
+  }
+
+  /**
+   * Conver the last modified timestamp into a human readable relative time
+   * @param {number} millis Unix timestamp for last modification of suggestion
+   */
+  readableTime(millis: number) {
+    if (millis == 1) {
+      return "Never";
+    }
+
+    let secondsAgo = (Date.now() - millis) / 1000;
+
+    if (secondsAgo < 3600) {
+      return "Just now";
+    } else if (secondsAgo < 3600 * 24) {
+      return "Earlier today";
+    } else if (secondsAgo < 3600 * 24 * 2) {
+      return "Yesterday";
+    } else if (secondsAgo < 3600 * 24 * 3) {
+      return "2 days ago";
+    } else if (secondsAgo < 3600 * 24 * 4) {
+      return "3 days ago";
+    } else if (secondsAgo < 3600 * 24 * 5) {
+      return "4 days ago";
+    } else if (secondsAgo < 3600 * 24 * 6) {
+      return "5 days ago";
+    } else if (secondsAgo < 3600 * 24 * 7) {
+      return "6 days ago";
+    } else if (secondsAgo < 3600 * 24 * 8) {
+      return "1 weeka ago";
+    } else if (secondsAgo < 3600 * 24 * 15) {
+      return "2 weeks ago";
+    } else if (secondsAgo < 3600 * 24 * 22) {
+      return "3 weeks ago";
+    } else if (secondsAgo < 3600 * 24 * 30) {
+      return "1 month ago";
+    } else if (secondsAgo < 3600 * 24 * 30 * 2) {
+      return "2 months ago";
+    } else if (secondsAgo < 3600 * 24 * 30 * 3) {
+      return "3 months ago";
+    } else if (secondsAgo < 3600 * 24 * 30 * 4) {
+      return "4 months ago";
+    } else if (secondsAgo < 3600 * 24 * 30 * 5) {
+      return "5 months ago";
+    } else if (secondsAgo < 3600 * 24 * 30 * 6) {
+      return "6 months ago";
+    } else if (secondsAgo < 3600 * 24 * 365) {
+      return "1 year ago";
+    } else {
+      return "More than a year ago";
+    }
+  }
+}
+
 function titleCase(text: string) {
   let str = text
     .toLowerCase()
@@ -276,13 +399,37 @@ function addNewItem() {
       quantity: regexParts.groups.quantity || "",
       units: regexParts.groups.unit || "",
       notes: "",
-      category: "Uncategorised",
+      category: "Uncategorized",
       done: false,
     };
 
     shoppingList.addItem(newItem);
     populateList();
   }
+}
+
+function addNewItemSuggestion(event) {
+  // Extract any quantity and units from input box
+  let addModal: HTMLDialogElement = document.querySelector("#new-item-dialog");
+  let name = (addModal.querySelector("#name") as HTMLInputElement).value;
+  let regexParts = ITEM_PATTERN.exec(name);
+  addModal.close();
+
+  // Get item name from selected suggestion
+  let selection = event.target.closest("li").dataset.item;
+  let category = event.target.closest("li").dataset.category;
+
+  let newItem = {
+    item: titleCase(selection),
+    quantity: regexParts.groups.quantity || "",
+    units: regexParts.groups.unit || "",
+    notes: "",
+    category: category,
+    done: false,
+  };
+
+  shoppingList.addItem(newItem);
+  populateList();
 }
 
 function createSVG(letter: string, bg_colour: string) {
