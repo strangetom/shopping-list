@@ -155,7 +155,7 @@ h4 {
 }
 
 .dialog {
-  width: 80%;
+  width: 85vw;
   max-width: 70ch;
   background-color: var(--bg);
   border: 5px double var(--gray);

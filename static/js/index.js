@@ -1,48 +1,20 @@
+import { ShoppingList } from "./module-shoppinglist.js";
+import { Catalog } from "./module-catalog.js";
 var shoppingList;
+var CATALOG = new Catalog();
 const ITEM_PATTERN = /(?<quantity>[\d\.]+\s?)?(?<unit>(g|kg|ml|L)\s?)?(?<name>.*)/;
-const categoryColours = {
-    "Fruits & Vegetables": "#98971a",
-    "Bread & Pastries": "#7c6f64",
-    "Ingredients & Spices": "#d79921",
-    "Snacks & Beverages": "#b16286",
-    "Meat & Fish": "#cc241d",
-    "Refrigerated & Frozen": "#458588",
-    "Other Food Items": "#83a598",
-    "Non-food Items": "#d65d0e",
-    Medicine: "#689d6a",
-    Uncategorised: "#a89984",
+const categoryInfo = {
+    "Bread & Pastries": { color: "#7c6f64", id: 0 },
+    "Fruits & Vegetables": { color: "#98971a", id: 1 },
+    "Ingredients & Spices": { color: "#d79921", id: 2 },
+    "Meat & Fish": { color: "#cc241d", id: 3 },
+    Medicine: { color: "#689d6a", id: 4 },
+    "Non-Food Items": { color: "#d65d0e", id: 5 },
+    "Other Food Items": { color: "#83a598", id: 6 },
+    "Refrigerated & Frozen": { color: "#458588", id: 7 },
+    "Snacks & Beverages": { color: "#b16286", id: 8 },
+    Uncategorized: { color: "#a89984", id: 9 },
 };
-class ShoppingList {
-    constructor() {
-        let storedList = localStorage.getItem("currentList");
-        if (storedList != null) {
-            this.currentList = JSON.parse(storedList);
-        }
-        else {
-            this.currentList = [];
-        }
-    }
-    save() {
-        localStorage.setItem("currentList", JSON.stringify(this.currentList));
-    }
-    addItem(data) {
-        this.currentList.push(data);
-        this.save();
-    }
-    updateItem(data, index) {
-        this.currentList[index] = data;
-        this.save();
-    }
-    toggleDone(index) {
-        this.currentList[index].done = !this.currentList[index].done;
-        this.save();
-    }
-    purgeDone() {
-        let purgedList = this.currentList.filter((item) => !item.done);
-        this.currentList = purgedList;
-        this.save();
-    }
-}
 document.addEventListener("DOMContentLoaded", () => {
     installServiceWorker();
     customElements.define("list-item", ListItem, {
@@ -62,6 +34,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (event.target.nodeName === "DIALOG") {
             addModal.returnValue = "cancel";
             addModal.close();
+        }
+    });
+    let addItemInput = addModal.querySelector("#name");
+    addItemInput.addEventListener("input", (e) => {
+        let fragment = e.target.value;
+        let regexParts = ITEM_PATTERN.exec(fragment);
+        if (regexParts.groups.name != "") {
+            let suggestions = CATALOG.suggest(regexParts.groups.name);
+            console.log(suggestions);
         }
     });
 });
@@ -99,7 +80,7 @@ class ListItem extends HTMLLIElement {
         let tr = document.createElement("tr");
         table.appendChild(tr);
         let td_left = document.createElement("td");
-        let color = categoryColours[this.data.category];
+        let color = categoryInfo[this.data.category].color;
         let svg = createSVG(this.data.item.slice(0, 1).toUpperCase(), color);
         svg.addEventListener("click", this.done.bind(this));
         td_left.appendChild(svg);

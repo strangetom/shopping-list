@@ -1,85 +1,24 @@
-interface ItemData {
-  item: string;
-  quantity: string;
-  units: string;
-  notes: string;
-  category: string;
-  done: boolean;
-}
+import { ShoppingList, ItemData } from "./module-shoppinglist.js";
+import { Catalog } from "./module-catalog.js";
 
 var shoppingList;
+var CATALOG = new Catalog();
 
 const ITEM_PATTERN =
   /(?<quantity>[\d\.]+\s?)?(?<unit>(g|kg|ml|L)\s?)?(?<name>.*)/;
 
-const categoryColours = {
-  "Fruits & Vegetables": "#98971a",
-  "Bread & Pastries": "#7c6f64",
-  "Ingredients & Spices": "#d79921",
-  "Snacks & Beverages": "#b16286",
-  "Meat & Fish": "#cc241d",
-  "Refrigerated & Frozen": "#458588",
-  "Other Food Items": "#83a598",
-  "Non-food Items": "#d65d0e",
-  Medicine: "#689d6a",
-  Uncategorised: "#a89984",
+const categoryInfo = {
+  "Bread & Pastries": { color: "#7c6f64", id: 0 },
+  "Fruits & Vegetables": { color: "#98971a", id: 1 },
+  "Ingredients & Spices": { color: "#d79921", id: 2 },
+  "Meat & Fish": { color: "#cc241d", id: 3 },
+  Medicine: { color: "#689d6a", id: 4 },
+  "Non-Food Items": { color: "#d65d0e", id: 5 },
+  "Other Food Items": { color: "#83a598", id: 6 },
+  "Refrigerated & Frozen": { color: "#458588", id: 7 },
+  "Snacks & Beverages": { color: "#b16286", id: 8 },
+  Uncategorized: { color: "#a89984", id: 9 },
 };
-
-class ShoppingList {
-  currentList;
-  constructor() {
-    let storedList = localStorage.getItem("currentList");
-    if (storedList != null) {
-      this.currentList = JSON.parse(storedList);
-    } else {
-      this.currentList = [];
-    }
-  }
-
-  /**
-   * Save current list to local storage
-   */
-  save() {
-    localStorage.setItem("currentList", JSON.stringify(this.currentList));
-  }
-
-  /**
-   * Add new item to list
-   * @param {ItemData} item New item to add to list
-   */
-  addItem(data: ItemData) {
-    this.currentList.push(data);
-    this.save();
-  }
-
-  /**
-   * Update item in list
-   * @param {ItemData} data  New item data for item
-   * @param {number}   index Index of item in list
-   */
-  updateItem(data: ItemData, index: number) {
-    this.currentList[index] = data;
-    this.save();
-  }
-
-  /**
-   * Toggle done flag for item
-   * @param {number} index Index of item to toggle done flag
-   */
-  toggleDone(index: number) {
-    this.currentList[index].done = !this.currentList[index].done;
-    this.save();
-  }
-
-  /**
-   * Purge items marked as done from list
-   */
-  purgeDone() {
-    let purgedList = this.currentList.filter((item) => !item.done);
-    this.currentList = purgedList;
-    this.save();
-  }
-}
 
 document.addEventListener("DOMContentLoaded", () => {
   installServiceWorker();
@@ -101,6 +40,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if ((event.target as HTMLElement).nodeName === "DIALOG") {
       addModal.returnValue = "cancel";
       addModal.close();
+    }
+  });
+  let addItemInput = addModal.querySelector("#name");
+  addItemInput.addEventListener("input", (e) => {
+    let fragment = (e.target as HTMLInputElement).value;
+    let regexParts = ITEM_PATTERN.exec(fragment);
+    if (regexParts.groups.name != "") {
+      let suggestions = CATALOG.suggest(regexParts.groups.name);
+      console.log(suggestions);
     }
   });
 });
@@ -158,7 +106,7 @@ class ListItem extends HTMLLIElement {
     table.appendChild(tr);
 
     let td_left = document.createElement("td");
-    let color = categoryColours[this.data.category];
+    let color = categoryInfo[this.data.category].color;
     let svg = createSVG(this.data.item.slice(0, 1).toUpperCase(), color);
     svg.addEventListener("click", this.done.bind(this));
     td_left.appendChild(svg);
