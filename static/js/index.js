@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     let addItemInput = addModal.querySelector("#name");
     addItemInput.addEventListener("input", suggestItems);
+    let downloadBtn = document.querySelector("#download-catalog");
+    downloadBtn.addEventListener("click", downloadCatalog);
 });
 function populateList() {
     let listEl = document.querySelector("#list");

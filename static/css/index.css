@@ -42,10 +42,21 @@ body {
   right: 0;
   background-color: var(--bg-s);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
 }
 h1 {
   margin: 1rem;
   font-weight: 400;
+}
+#download-catalog {
+  background: none;
+  border: none;
+  display: block;
+}
+#download-catalog img {
+  width: 1.8rem;
+  padding: 1rem;
 }
 
 #fab {

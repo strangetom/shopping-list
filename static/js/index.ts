@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   shoppingList.purgeDone();
   populateList();
 
+  // Open new item dialog when clicking FAB
   let addBtn: HTMLButtonElement = document.querySelector("#fab");
   let addModal: HTMLDialogElement = document.querySelector("#new-item-dialog");
   addBtn.addEventListener("click", () => {
@@ -53,7 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let addItemInput = addModal.querySelector("#name");
   addItemInput.addEventListener("input", suggestItems);
 
-
+  // Download json catalog when clicking download button
+  let downloadBtn: HTMLButtonElement =
+    document.querySelector("#download-catalog");
+  downloadBtn.addEventListener("click", downloadCatalog);
 });
 
 function populateList() {
