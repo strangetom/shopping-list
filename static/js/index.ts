@@ -54,20 +54,25 @@ document.addEventListener("DOMContentLoaded", () => {
       "#suggestions"
     ) as HTMLUListElement;
     let fragment = (e.target as HTMLInputElement).value;
-    let regexParts = ITEM_PATTERN.exec(fragment);
-    if (regexParts.groups.name != "") {
-      let suggestions = CATALOG.suggest(regexParts.groups.name);
 
-      if (Object.keys(suggestions).length > 0) {
-        suggestiondEl.replaceChildren();
+    if (fragment == "") {
+      suggestiondEl.replaceChildren();
+    } else {
+      let regexParts = ITEM_PATTERN.exec(fragment);
+      if (regexParts.groups.name != "") {
+        let suggestions = CATALOG.suggest(regexParts.groups.name);
 
-        for (let suggest of Object.entries(suggestions)) {
-          let el = new SuggestionItem(
-            suggest[0],
-            suggest[1]["modified"],
-            suggest[1]["category"]
-          );
-          suggestiondEl.appendChild(el);
+        if (Object.keys(suggestions).length > 0) {
+          suggestiondEl.replaceChildren();
+
+          for (let suggest of Object.entries(suggestions)) {
+            let el = new SuggestionItem(
+              suggest[0],
+              suggest[1]["modified"],
+              suggest[1]["category"]
+            );
+            suggestiondEl.appendChild(el);
+          }
         }
       }
     }
@@ -463,7 +468,9 @@ function createSVG(letter: string, bg_colour: string) {
 }
 
 function downloadCatalog() {
-  var catalogStr = "data:text/json;charset=utf-8," + encodeURIComponent(localStorage.getItem("catalog"));
+  var catalogStr =
+    "data:text/json;charset=utf-8," +
+    encodeURIComponent(localStorage.getItem("catalog"));
 
   let link = document.createElement("a");
   link.setAttribute("href", catalogStr);
