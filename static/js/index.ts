@@ -5,7 +5,7 @@ var shoppingList;
 var CATALOG = new Catalog();
 
 const ITEM_PATTERN =
-  /(?<quantity>[\d\.]+\s?)?(?<unit>(g|kg|ml|L)\s?)?(?<name>.*)/;
+  /(?<quantity>[\d\.]+\s)?(?<unit>(g|kg|ml|L)\s)?(?<name>.*)/;
 
 const categoryInfo = {
   "Bread & Pastries": { color: "#7c6f64", id: 0 },

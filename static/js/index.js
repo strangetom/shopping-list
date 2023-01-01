@@ -2,7 +2,7 @@ import { ShoppingList } from "./module-shoppinglist.js";
 import { Catalog } from "./module-catalog.js";
 var shoppingList;
 var CATALOG = new Catalog();
-const ITEM_PATTERN = /(?<quantity>[\d\.]+\s?)?(?<unit>(g|kg|ml|L)\s?)?(?<name>.*)/;
+const ITEM_PATTERN = /(?<quantity>[\d\.]+\s)?(?<unit>(g|kg|ml|L)\s)?(?<name>.*)/;
 const categoryInfo = {
     "Bread & Pastries": { color: "#7c6f64", id: 0 },
     "Fruits & Vegetables": { color: "#98971a", id: 1 },
