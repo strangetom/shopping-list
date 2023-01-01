@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (Object.keys(suggestions).length > 0) {
                 suggestiondEl.replaceChildren();
                 for (let suggest of Object.entries(suggestions)) {
-                    let el = new SuggestionItem(suggest[0], suggest[1].modified, suggest[1].category);
+                    let el = new SuggestionItem(suggest[0], suggest[1]["modified"], suggest[1]["category"]);
                     suggestiondEl.appendChild(el);
                 }
             }
@@ -212,6 +212,7 @@ class SuggestionItem extends HTMLLIElement {
         td_left.appendChild(svg);
         tr.appendChild(td_left);
         let td_right = document.createElement("td");
+        td_right.classList.add("suggestion-text");
         tr.appendChild(td_right);
         let h4 = document.createElement("h4");
         h4.innerText = titleCase(this.item);
@@ -222,65 +223,65 @@ class SuggestionItem extends HTMLLIElement {
     }
     readableTime(millis) {
         if (millis == 1) {
-            return "Never bought";
+            return "Never";
         }
         let secondsAgo = (Date.now() - millis) / 1000;
         if (secondsAgo < 3600) {
-            return "Last bought just now";
+            return "Just now";
         }
         else if (secondsAgo < 3600 * 24) {
-            return "Last bought earlier today";
+            return "Earlier today";
         }
         else if (secondsAgo < 3600 * 24 * 2) {
-            return "Last bought yesterday";
+            return "Yesterday";
         }
         else if (secondsAgo < 3600 * 24 * 3) {
-            return "Last bought 2 days ago";
+            return "2 days ago";
         }
         else if (secondsAgo < 3600 * 24 * 4) {
-            return "Last bought 3 days ago";
+            return "3 days ago";
         }
         else if (secondsAgo < 3600 * 24 * 5) {
-            return "Last bought 4 days ago";
+            return "4 days ago";
         }
         else if (secondsAgo < 3600 * 24 * 6) {
-            return "Last bought 5 days ago";
+            return "5 days ago";
         }
         else if (secondsAgo < 3600 * 24 * 7) {
-            return "Last bought 6 days ago";
+            return "6 days ago";
         }
         else if (secondsAgo < 3600 * 24 * 8) {
-            return "Last bought 1 weeka ago";
+            return "1 weeka ago";
         }
         else if (secondsAgo < 3600 * 24 * 15) {
-            return "Last bought 2 weeks ago";
+            return "2 weeks ago";
         }
         else if (secondsAgo < 3600 * 24 * 22) {
-            return "Last bought 3 weeks ago";
+            return "3 weeks ago";
         }
         else if (secondsAgo < 3600 * 24 * 30) {
-            return "Last bought 1 month ago";
+            return "1 month ago";
         }
         else if (secondsAgo < 3600 * 24 * 30 * 2) {
-            return "Last bought 2 months ago";
+            return "2 months ago";
         }
         else if (secondsAgo < 3600 * 24 * 30 * 3) {
-            return "Last bought 3 months ago";
+            return "3 months ago";
         }
         else if (secondsAgo < 3600 * 24 * 30 * 4) {
-            return "Last bought 4 months ago";
+            return "4 months ago";
         }
         else if (secondsAgo < 3600 * 24 * 30 * 5) {
-            return "Last bought 5 months ago";
+            return "5 months ago";
         }
         else if (secondsAgo < 3600 * 24 * 30 * 6) {
-            return "Last bought 6 months ago";
+            return "6 months ago";
         }
         else if (secondsAgo < 3600 * 24 * 365) {
-            return "Last bought 1 year ago";
+            return "1 year ago";
         }
         else {
-            return "Last bought more than a year ago";
+            return ">1 year ago";
         }
     }
 }
