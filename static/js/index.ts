@@ -461,6 +461,15 @@ function createSVG(letter: string, bg_colour: string) {
   return svg;
 }
 
+function downloadCatalog() {
+  var catalogStr = "data:text/json;charset=utf-8," + encodeURIComponent(localStorage.getItem("catalog"));
+
+  let link = document.createElement("a");
+  link.setAttribute("href", catalogStr);
+  link.setAttribute("download", "catalog.json");
+  link.click();
+}
+
 /**
  * Convenience function to install service worker
  */

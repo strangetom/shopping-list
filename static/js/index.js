@@ -347,6 +347,13 @@ function createSVG(letter, bg_colour) {
     svg.appendChild(text);
     return svg;
 }
+function downloadCatalog() {
+    var catalogStr = "data:text/json;charset=utf-8," + encodeURIComponent(localStorage.getItem("catalog"));
+    let link = document.createElement("a");
+    link.setAttribute("href", catalogStr);
+    link.setAttribute("download", "catalog.json");
+    link.click();
+}
 function installServiceWorker() {
     if ("serviceWorker" in navigator) {
         console.log("CLIENT: service worker registration in progress.");
