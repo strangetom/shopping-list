@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ).replaceChildren();
     addModal.showModal();
   });
+  // Add item when new item dialog closed, unless background was clicked
   addModal.addEventListener("close", addNewItem);
   addModal.addEventListener("click", (event) => {
     if ((event.target as HTMLElement).nodeName === "DIALOG") {
@@ -48,35 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
       addModal.close();
     }
   });
+  // On typing in new item dialog, display suggestions based on text typed
   let addItemInput = addModal.querySelector("#name");
-  addItemInput.addEventListener("input", (e) => {
-    let suggestiondEl = document.querySelector(
-      "#suggestions"
-    ) as HTMLUListElement;
-    let fragment = (e.target as HTMLInputElement).value;
+  addItemInput.addEventListener("input", suggestItems);
 
-    if (fragment == "") {
-      suggestiondEl.replaceChildren();
-    } else {
-      let regexParts = ITEM_PATTERN.exec(fragment);
-      if (regexParts.groups.name != "") {
-        let suggestions = CATALOG.suggest(regexParts.groups.name);
 
-        if (Object.keys(suggestions).length > 0) {
-          suggestiondEl.replaceChildren();
-
-          for (let suggest of Object.entries(suggestions)) {
-            let el = new SuggestionItem(
-              suggest[0],
-              suggest[1]["modified"],
-              suggest[1]["category"]
-            );
-            suggestiondEl.appendChild(el);
-          }
-        }
-      }
-    }
-  });
 });
 
 function populateList() {
@@ -413,6 +390,39 @@ function addNewItem() {
 
     shoppingList.addItem(newItem);
     populateList();
+  }
+}
+
+/**
+ * suggestItems callback, called when typing text into new item dialog
+ * @param {[type]} event Input event for new item dialog
+ */
+function suggestItems(event) {
+  let suggestiondEl = document.querySelector(
+    "#suggestions"
+  ) as HTMLUListElement;
+  let fragment = (event.target as HTMLInputElement).value;
+
+  if (fragment == "") {
+    suggestiondEl.replaceChildren();
+  } else {
+    let regexParts = ITEM_PATTERN.exec(fragment);
+    if (regexParts.groups.name != "") {
+      let suggestions = CATALOG.suggest(regexParts.groups.name);
+
+      if (Object.keys(suggestions).length > 0) {
+        suggestiondEl.replaceChildren();
+
+        for (let suggest of Object.entries(suggestions)) {
+          let el = new SuggestionItem(
+            suggest[0],
+            suggest[1]["modified"],
+            suggest[1]["category"]
+          );
+          suggestiondEl.appendChild(el);
+        }
+      }
+    }
   }
 }
 

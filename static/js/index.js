@@ -41,26 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
     let addItemInput = addModal.querySelector("#name");
-    addItemInput.addEventListener("input", (e) => {
-        let suggestiondEl = document.querySelector("#suggestions");
-        let fragment = e.target.value;
-        if (fragment == "") {
-            suggestiondEl.replaceChildren();
-        }
-        else {
-            let regexParts = ITEM_PATTERN.exec(fragment);
-            if (regexParts.groups.name != "") {
-                let suggestions = CATALOG.suggest(regexParts.groups.name);
-                if (Object.keys(suggestions).length > 0) {
-                    suggestiondEl.replaceChildren();
-                    for (let suggest of Object.entries(suggestions)) {
-                        let el = new SuggestionItem(suggest[0], suggest[1]["modified"], suggest[1]["category"]);
-                        suggestiondEl.appendChild(el);
-                    }
-                }
-            }
-        }
-    });
+    addItemInput.addEventListener("input", suggestItems);
 });
 function populateList() {
     let listEl = document.querySelector("#list");
@@ -315,6 +296,26 @@ function addNewItem() {
         };
         shoppingList.addItem(newItem);
         populateList();
+    }
+}
+function suggestItems(event) {
+    let suggestiondEl = document.querySelector("#suggestions");
+    let fragment = event.target.value;
+    if (fragment == "") {
+        suggestiondEl.replaceChildren();
+    }
+    else {
+        let regexParts = ITEM_PATTERN.exec(fragment);
+        if (regexParts.groups.name != "") {
+            let suggestions = CATALOG.suggest(regexParts.groups.name);
+            if (Object.keys(suggestions).length > 0) {
+                suggestiondEl.replaceChildren();
+                for (let suggest of Object.entries(suggestions)) {
+                    let el = new SuggestionItem(suggest[0], suggest[1]["modified"], suggest[1]["category"]);
+                    suggestiondEl.appendChild(el);
+                }
+            }
+        }
     }
 }
 function addNewItemSuggestion(event) {
