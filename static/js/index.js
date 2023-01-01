@@ -206,6 +206,7 @@ class SuggestionItem extends HTMLLIElement {
         let tr = document.createElement("tr");
         table.appendChild(tr);
         let td_left = document.createElement("td");
+        td_left.classList.add("suggestion-icon");
         let color = categoryInfo[this.category].color;
         let svg = createSVG("", color);
         td_left.appendChild(svg);
@@ -221,65 +222,65 @@ class SuggestionItem extends HTMLLIElement {
     }
     readableTime(millis) {
         if (millis == 1) {
-            return "Never";
+            return "Never bought";
         }
         let secondsAgo = (Date.now() - millis) / 1000;
         if (secondsAgo < 3600) {
-            return "Just now";
+            return "Last bought just now";
         }
         else if (secondsAgo < 3600 * 24) {
-            return "Earlier today";
+            return "Last bought earlier today";
         }
         else if (secondsAgo < 3600 * 24 * 2) {
-            return "Yesterday";
+            return "Last bought yesterday";
         }
         else if (secondsAgo < 3600 * 24 * 3) {
-            return "2 days ago";
+            return "Last bought 2 days ago";
         }
         else if (secondsAgo < 3600 * 24 * 4) {
-            return "3 days ago";
+            return "Last bought 3 days ago";
         }
         else if (secondsAgo < 3600 * 24 * 5) {
-            return "4 days ago";
+            return "Last bought 4 days ago";
         }
         else if (secondsAgo < 3600 * 24 * 6) {
-            return "5 days ago";
+            return "Last bought 5 days ago";
         }
         else if (secondsAgo < 3600 * 24 * 7) {
-            return "6 days ago";
+            return "Last bought 6 days ago";
         }
         else if (secondsAgo < 3600 * 24 * 8) {
-            return "1 weeka ago";
+            return "Last bought 1 weeka ago";
         }
         else if (secondsAgo < 3600 * 24 * 15) {
-            return "2 weeks ago";
+            return "Last bought 2 weeks ago";
         }
         else if (secondsAgo < 3600 * 24 * 22) {
-            return "3 weeks ago";
+            return "Last bought 3 weeks ago";
         }
         else if (secondsAgo < 3600 * 24 * 30) {
-            return "1 month ago";
+            return "Last bought 1 month ago";
         }
         else if (secondsAgo < 3600 * 24 * 30 * 2) {
-            return "2 months ago";
+            return "Last bought 2 months ago";
         }
         else if (secondsAgo < 3600 * 24 * 30 * 3) {
-            return "3 months ago";
+            return "Last bought 3 months ago";
         }
         else if (secondsAgo < 3600 * 24 * 30 * 4) {
-            return "4 months ago";
+            return "Last bought 4 months ago";
         }
         else if (secondsAgo < 3600 * 24 * 30 * 5) {
-            return "5 months ago";
+            return "Last bought 5 months ago";
         }
         else if (secondsAgo < 3600 * 24 * 30 * 6) {
-            return "6 months ago";
+            return "Last bought 6 months ago";
         }
         else if (secondsAgo < 3600 * 24 * 365) {
-            return "1 year ago";
+            return "Last bought 1 year ago";
         }
         else {
-            return "More than a year ago";
+            return "Last bought more than a year ago";
         }
     }
 }
@@ -331,9 +332,7 @@ function createSVG(letter, bg_colour) {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    svg.setAttribute("width", "40");
-    svg.setAttribute("height", "40");
-    svg.classList.add("icon");
+    svg.setAttribute("viewBox", "0 0 40 40");
     circle.setAttribute("cx", "20");
     circle.setAttribute("cy", "20");
     circle.setAttribute("r", "18");

@@ -4,6 +4,7 @@
   --bg-s: #32302f;
   --bg-1: #3c3836;
   --bg-2: #504945;
+  --bg-3: #665c54;
   --bg-4: #7c6f64;
   --fg: #fbf1c7;
   --fg-1: #a89984;
@@ -147,7 +148,7 @@ h4 {
 
 .done {
   background-color: var(--bg);
-  filter: brightness(0.3);
+  filter: brightness(0.4);
 }
 .done h4 {
   text-decoration: line-through 2px;
@@ -207,4 +208,65 @@ h4 {
   padding: .5rem .8rem;
   margin: 0 .2rem;
   background-color: var(--purple);
+}
+
+#new-item-dialog {
+  width: 90vw;
+  max-width: 70ch;
+  border: none;
+  background: none;
+  margin-top: 2vh;
+}
+#new-item-dialog::backdrop {
+  /* Backdrop does not inherit from any element so cannot use CSS variables.
+  https://fullscreen.spec.whatwg.org/#::backdrop-pseudo-element
+  */
+  background-color: #32302f66;
+  backdrop-filter: blur(2px);
+}
+#new-item-dialog div {
+  display: flex;
+}
+#new-item-dialog input {
+  box-sizing: border-box;
+  font-size: 1rem;
+  border: none;
+  border-radius: .2rem 0 0 .2rem;
+  padding: .5rem;
+  background-color: var(--fg);
+  color: var(--bg);
+  word-break: break-word;
+  /*The 3.5 rem = 2*0.5rem from the padding on the input and 2.5 rem from the width of the button*/
+  width: calc(100vw - 3.5rem);
+}
+#new-item-dialog input:focus {
+  outline: none;
+}
+#new-item-dialog button {
+  border-radius: 0 .2rem .2rem 0;
+  font-family: sans-serif;
+  text-align: center;
+  border: 1px solid var(--purple-alt);
+  background-color: var(--purple);
+  font-size: 2rem;
+  width: 2.5rem;
+}
+#suggestions {
+  margin-top: .25rem;
+}
+#suggestions li {
+  margin-top: .25rem;
+  background-color: var(--fg);
+  color: var(--bg);
+  border-radius: .2rem;
+}
+#suggestions .suggestion-icon {
+  width: 1.3rem;
+  vertical-align: text-top;
+  padding-top: 3px;
+}
+#suggestions small {
+  font-size: .7rem;
+  font-style: italic;
+  vertical-align: top;
 }

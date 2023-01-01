@@ -76,21 +76,13 @@
             </form>
         </dialog>
 
-        <dialog class="dialog" id="new-item-dialog">
+        <dialog id="new-item-dialog">
             <form method="dialog">
-                <h3>New item</h3>
-
-                <div class="edit-input">
-                    <label for="name">Name</label>
+                <div>
                     <input type="text" id="name" name="name" autocomplete="off" value="">
+                    <button type="submit" value="submit">+</button>
                 </div>
-
                 <ul id="suggestions"></ul>
-
-                <div class="buttons">
-                    <button type="submit" value="submit">Add</button>
-                    <button type="submit" value="cancel">Cancel</button>
-                </div>
             </form>
         </dialog>
 
