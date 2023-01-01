@@ -5,7 +5,7 @@ var shoppingList;
 var CATALOG = new Catalog();
 
 const ITEM_PATTERN =
-  /(?<quantity>[\d\.]+\s)?(?<unit>(g|kg|ml|L)\s)?(?<name>.*)/;
+  /(?<quantity>[\d\.]+\s)?(?<unit>(g|G|kg|Kg|ml|Ml|l|L)\s)?(?<name>.*)/;
 
 const categoryInfo = {
   "Bread & Pastries": { color: "#7c6f64", id: 0 },
@@ -180,7 +180,8 @@ class ListItem extends HTMLLIElement {
 
     // Only add quantity and unit is they're not both empty
     if (!(this.data.quantity == "" && this.data.units == "")) {
-      quantity_units.innerText = this.data.quantity + " " + this.data.units;
+      quantity_units.innerText =
+        this.data.quantity + " " + this.data.units.toLowerCase();
     } else {
       quantity_units.innerText = "";
     }

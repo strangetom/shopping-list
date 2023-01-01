@@ -2,7 +2,7 @@ import { ShoppingList } from "./module-shoppinglist.js";
 import { Catalog } from "./module-catalog.js";
 var shoppingList;
 var CATALOG = new Catalog();
-const ITEM_PATTERN = /(?<quantity>[\d\.]+\s)?(?<unit>(g|kg|ml|L)\s)?(?<name>.*)/;
+const ITEM_PATTERN = /(?<quantity>[\d\.]+\s)?(?<unit>(g|G|kg|Kg|ml|Ml|l|L)\s)?(?<name>.*)/;
 const categoryInfo = {
     "Bread & Pastries": { color: "#7c6f64", id: 0 },
     "Fruits & Vegetables": { color: "#98971a", id: 1 },
@@ -132,7 +132,8 @@ class ListItem extends HTMLLIElement {
         h4.innerText = this.data.item;
         note.innerText = this.data.notes;
         if (!(this.data.quantity == "" && this.data.units == "")) {
-            quantity_units.innerText = this.data.quantity + " " + this.data.units;
+            quantity_units.innerText =
+                this.data.quantity + " " + this.data.units.toLowerCase();
         }
         else {
             quantity_units.innerText = "";
