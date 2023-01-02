@@ -134,10 +134,6 @@ ul {
   border-bottom: 2px solid var(--gray);
 }
 
-.icon {
-  vertical-align: middle;
-}
-
 .item {
   background-color: var(--bg-s);
 }
@@ -178,52 +174,58 @@ h4 {
   font-style: italic;
 }
 
-.dialog {
-  width: 85vw;
-  max-width: 70ch;
-  background-color: var(--bg);
-  border: 5px double var(--gray);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
-  margin-top: 5vh;
-}
-.dialog::backdrop {
+dialog::backdrop {
   /* Backdrop does not inherit from any element so cannot use CSS variables.
   https://fullscreen.spec.whatwg.org/#::backdrop-pseudo-element
   */
   background-color: #32302f66;
   backdrop-filter: blur(2px);
 }
-.dialog h3 {
-  margin: 0 0 .5rem 0;
+input:focus {
+  outline: none;
+}
+#edit-item-dialog {
+  width: 90vw;
+  max-width: 70ch;
+  background-color: var(--fg);
+  border: none;
+  margin-top: 2vh;
+  border-radius: .2rem;
+}
+.edit-input {
+  width: 100%;
 }
 .edit-input label {
   margin-top: .5rem;
   display: block;
   font-size: .8rem;
+  color: var(--bg);
 }
 .edit-input input,
 .edit-input select {
   box-sizing: border-box;
   font-size: 1rem;
   border: none;
-  border-radius: .25rem;
+  border-radius: .2rem;
   padding: .5rem;
-  background-color: var(--bg-2);
+  background-color: var(--blue-alt);
+  color: var(--bg);
   width: 100%;
   word-break: break-word;
 }
 .edit-input-dual {
   display: flex;
+  justify-content: space-between;
   gap: 1rem;
 }
 
-.dialog .buttons {
+#edit-item-dialog .buttons {
   margin-top: 1rem;
   text-align: right;
   display: flex;
   flex-direction: row-reverse;
 }
-.dialog button {
+#edit-item-dialog button {
   font-family: sans-serif;
   text-align: center;
   border: 1px solid var(--purple-alt);
@@ -240,13 +242,6 @@ h4 {
   background: none;
   margin-top: 2vh;
 }
-#new-item-dialog::backdrop {
-  /* Backdrop does not inherit from any element so cannot use CSS variables.
-  https://fullscreen.spec.whatwg.org/#::backdrop-pseudo-element
-  */
-  background-color: #32302f66;
-  backdrop-filter: blur(2px);
-}
 #new-item-dialog div {
   display: flex;
 }
@@ -261,9 +256,6 @@ h4 {
   word-break: break-word;
   /*The 3.5 rem = 2*0.5rem from the padding on the input and 2.5 rem from the width of the button*/
   width: calc(100vw - 3.5rem);
-}
-#new-item-dialog input:focus {
-  outline: none;
 }
 #new-item-dialog button {
   border-radius: 0 .2rem .2rem 0;
