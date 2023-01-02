@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="Description" content="Shopping list">
+        <meta name="viewport" content="width=device-width">
+        <title>Shopping List</title>
+        <link rel="stylesheet" type="text/css" href="./static/css/index.css">
+        <script type="module" src="./static/js/index.js"></script>
+        <!-- icons and manifest for PWA -->
+        <link rel="manifest" href="/static/manifest.json">
+        <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+        <meta name="theme-color" content="#3c3836"/>
+    </head>
+    <body>
+
+        <section id="header">
+            <h1>Shopping List</h1>
+            <button type="button" id="download-catalog">
+                <img src="./static/img/download.svg" alt="Download catalog">
+            </button>
+        </section>
+
+        <section id="list">
+        </section>
+
+        <button id="bundle">
+            <img src="./static/img/bundle.svg" alt="New bundle">
+        </button>
+        <button id="fab">
+            +
+        </button>
+
+        <dialog id="edit-item-dialog">
+            <form method="dialog">
+                <div class="edit-input">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" autocomplete="off" value="">
+                </div>
+                <div class="edit-input-dual">
+                    <div class="edit-input">
+                        <label for="quantity">Quantity</label>
+                        <input type="text" id="quantity" name="quantity" autocomplete="off" value="">
+                    </div>
+                    <div class="edit-input">
+                        <label for="unit">Unit</label>
+                        <select id="units" name="unit">
+                            <option value=""></option>
+                            <option value="g">g</option>
+                            <option value="kg">kg</option>
+                            <option value="ml">ml</option>
+                            <option value="L">L</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="edit-input">
+                    <label for="notes">Notes</label>
+                    <input type="text" id="notes" name="notes" autocomplete="off" value="">
+                </div>
+                <div class="edit-input">
+                    <label for="category">Category</label>
+                    <select id="category" name="category">
+                        <option value="Uncategorized"></option>
+                        <option value="Bread & Pastries">Bread & Pastries</option>
+                        <option value="Fruits & Vegetables">Fruits & Vegetables</option>
+                        <option value="Ingredients & Spices">Ingredients & Spices</option>
+                        <option value="Meat & Fish">Meat & Fish</option>
+                        <option value="Medicine">Medicine</option>
+                        <option value="Non-Food Items">Non-Food Items</option>
+                        <option value="Other Food Items">Other Food Items</option>
+                        <option value="Refrigerated & Frozen">Refrigerated & Frozen</option>
+                        <option value="Snacks & Beverages">Snacks & Beverages</option>
+                    </select>
+                </div>
+
+                <div class="buttons">
+                    <button type="submit" value="submit">Edit</button>
+                    <button type="submit" value="cancel">Cancel</button>
+                </div>
+            </form>
+        </dialog>
+
+        <dialog id="new-item-dialog">
+            <form method="dialog">
+                <div>
+                    <input type="text" id="name" name="name" autocomplete="off" value="">
+                    <button type="submit" value="submit">+</button>
+                </div>
+                <ul id="suggestions"></ul>
+            </form>
+        </dialog>
+
+    </body>
+</html>

@@ -1,0 +1,302 @@
+:root {
+  color-scheme: dark;
+  --bg: #1d2021;
+  --bg-s: #32302f;
+  --bg-1: #3c3836;
+  --bg-2: #504945;
+  --bg-3: #665c54;
+  --bg-4: #7c6f64;
+  --fg: #fbf1c7;
+  --fg-1: #ebdbb2;
+  --fg-2: #d5c4a1;
+  --gray: #a89984;
+  --red: #cc241d;
+  --red-alt: #fb4934;
+  --green: #98971a;
+  --green-alt: #b8bb26;
+  --yellow: #d79921;
+  --yellow-alt: #fabd2f;
+  --blue: #458588;
+  --blue-alt: #83a598;
+  --purple: #b16286;
+  --purple-alt: #d3869b;
+  --orange: #d65d0e;
+  --orange-alt: #fe8019;
+  --aqua: #689d6a;
+  --aqua-alt: #8ec07c;
+}
+
+body {
+  font-family: sans-serif;
+  color: var(--fg);
+  background-color: var(--bg); 
+  margin: 0 auto;
+  margin-bottom: 5rem;
+  max-width: 80ch;
+  -webkit-font-smoothing: antialiased;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--bg-s);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+}
+h1 {
+  margin: 1rem;
+  font-weight: 400;
+}
+#download-catalog {
+  background: none;
+  border: none;
+  display: block;
+}
+#download-catalog img {
+  width: 1.8rem;
+  padding: 1rem;
+}
+
+#fab {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: none;
+  border-radius: 3rem;
+  background-color: var(--fg);
+  color: var(--bg-1);
+  font-size: 2.5rem;
+  font-weight: 100;
+}
+#bundle {
+  position: fixed;
+  bottom: 2rem;
+  right: 5.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 3rem;
+  background-color: var(--fg);
+  color: var(--bg-1);
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+
+#list {
+  margin-top: 4rem;
+}
+h2 {
+  font-weight: normal;
+  margin: 0;
+  padding: .5rem;
+  font-size: .8rem;
+  background-color: var(--bg);
+  border-top: 1px solid var(--bg-2);
+  background-image: url("/static/img/page-bg-dark.svg");
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.fruits-vegetables {
+  border-bottom: 2px solid var(--green);
+}
+.meat-fish {
+ border-bottom: 2px solid var(--red);
+}
+.bread-pastries {
+ border-bottom: 2px solid var(--bg-4); 
+}
+.ingredients-spices {
+  border-bottom: 2px solid var(--yellow);
+}
+.snacks-beverages {
+  border-bottom: 2px solid var(--purple);
+}
+.refrigerated-frozen {
+  border-bottom: 2px solid var(--blue);
+}
+.other-food-items {
+  border-bottom: 2px solid var(--blue-alt);
+}
+.non-food-items {
+  border-bottom: 2px solid var(--orange);
+}
+.medicine {
+  border-bottom: 2px solid var(--aqua);
+}
+.uncategorised {
+  border-bottom: 2px solid var(--gray);
+}
+
+.item {
+  background-color: var(--bg-s);
+}
+.item table {
+  width: 100%;
+  height: 3.8rem;
+  border-spacing: 0;
+  border-top: 1px solid var(--bg-2);
+  border-bottom: 1px solid var(--bg-2);
+}
+.item td:first-of-type {
+  width: 40px;
+  padding: 0 .5rem;
+}
+.item td:last-of-type {
+  width: 10%;
+  padding-right: 1rem;
+}
+h4 {
+  margin: 0;
+}
+.item-details {
+  font-style: italic;
+}
+.item button {
+  border: none;
+  background: none;
+  height: 40px;
+  width: 40px;
+}
+
+.done {
+  background-color: var(--bg);
+  filter: brightness(0.4);
+}
+.done h4 {
+  text-decoration: line-through 2px;
+  font-style: italic;
+}
+
+dialog::backdrop {
+  /* Backdrop does not inherit from any element so cannot use CSS variables.
+  https://fullscreen.spec.whatwg.org/#::backdrop-pseudo-element
+  */
+  background-color: #32302f66;
+  backdrop-filter: blur(2px);
+}
+input:focus {
+  outline: none;
+}
+#edit-item-dialog {
+  width: 90vw;
+  max-width: 70ch;
+  background-color: var(--fg);
+  border: none;
+  margin-top: 2vh;
+  border-radius: .2rem;
+}
+.edit-input {
+  width: 100%;
+}
+.edit-input label {
+  margin-top: .5rem;
+  display: block;
+  font-size: .8rem;
+  color: var(--bg);
+}
+.edit-input input,
+.edit-input select {
+  box-sizing: border-box;
+  font-size: 1rem;
+  border: none;
+  border-radius: .2rem;
+  padding: .5rem;
+  background-color: var(--blue-alt);
+  color: var(--bg);
+  width: 100%;
+  word-break: break-word;
+}
+.edit-input-dual {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+#edit-item-dialog .buttons {
+  margin-top: 1rem;
+  text-align: right;
+  display: flex;
+  flex-direction: row-reverse;
+}
+#edit-item-dialog button {
+  font-family: sans-serif;
+  text-align: center;
+  border: 1px solid var(--purple-alt);
+  border-radius: .25rem;
+  padding: .5rem .8rem;
+  margin: 0 .2rem;
+  background-color: var(--purple);
+}
+
+#new-item-dialog {
+  width: 90vw;
+  max-width: 70ch;
+  border: none;
+  background: none;
+  margin-top: 2vh;
+}
+#new-item-dialog div {
+  display: flex;
+}
+#new-item-dialog input {
+  box-sizing: border-box;
+  font-size: 1rem;
+  border: none;
+  border-radius: .2rem 0 0 .2rem;
+  padding: .5rem;
+  background-color: var(--fg);
+  color: var(--bg);
+  word-break: break-word;
+  /*The 3.5 rem = 2*0.5rem from the padding on the input and 2.5 rem from the width of the button*/
+  width: calc(100vw - 3.5rem);
+}
+#new-item-dialog button {
+  border-radius: 0 .2rem .2rem 0;
+  font-family: sans-serif;
+  text-align: center;
+  border: 1px solid var(--purple-alt);
+  background-color: var(--purple);
+  font-size: 2rem;
+  width: 2.5rem;
+}
+#suggestions {
+  margin-top: .25rem;
+}
+#suggestions li {
+  margin-top: .25rem;
+  background-color: var(--fg);
+  color: var(--bg);
+  border-radius: .2rem;
+}
+#suggestions .bundle {
+  background-color: var(--fg-2);
+}
+#suggestions table {
+  width: 100%;
+  height: 2.2rem;
+}
+#suggestions .suggestion-icon {
+  width: 1.3rem;
+  vertical-align: middle;
+  padding-top: 3px;  
+}
+#suggestions .suggestion-text {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 3px;
+}
+#suggestions small {
+  font-size: .7rem;
+  font-style: italic;
+  margin: auto 0;
+  padding-right: .5rem;
+}

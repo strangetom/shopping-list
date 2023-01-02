@@ -1,0 +1,64 @@
+{
+    "breakfast":
+    [
+        {
+            "item": "Orange Juice",
+            "units": "",
+            "quantity": "",
+            "notes": "",
+            "category": "Refrigerated & Frozen",
+            "done": false
+        },
+        {
+            "item": "Oat Milk",
+            "units": "",
+            "quantity": "",
+            "notes": "",
+            "category": "Refrigerated & Frozen",
+            "done": false
+        }
+    ],
+    "lunch":
+    [
+        {
+            "item": "Bread Rolls",
+            "units": "",
+            "quantity": "",
+            "notes": "",
+            "category": "Bread & Pastries",
+            "done": false
+        },
+        {
+            "item": "Breakfast Bars",
+            "units": "",
+            "quantity": "",
+            "notes": "",
+            "category": "Snacks & Beverages",
+            "done": false
+        },
+        {
+            "item": "Crisps",
+            "units": "",
+            "quantity": "",
+            "notes": "",
+            "category": "Snacks & Beverages",
+            "done": false
+        },
+        {
+            "item": "Fruit",
+            "units": "",
+            "quantity": "",
+            "notes": "",
+            "category": "Fruits & Vegetables",
+            "done": false
+        },
+        {
+            "item": "Sandwich Meat",
+            "units": "",
+            "quantity": "",
+            "notes": "",
+            "category": "Meat & Fish",
+            "done": false
+        }
+    ]
+}
