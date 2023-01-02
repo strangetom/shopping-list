@@ -7,7 +7,8 @@
   --bg-3: #665c54;
   --bg-4: #7c6f64;
   --fg: #fbf1c7;
-  --fg-1: #a89984;
+  --fg-1: #ebdbb2;
+  --fg-2: #d5c4a1;
   --gray: #a89984;
   --red: #cc241d;
   --red-alt: #fb4934;
@@ -274,6 +275,9 @@ input:focus {
   background-color: var(--fg);
   color: var(--bg);
   border-radius: .2rem;
+}
+#suggestions .bundle {
+  background-color: var(--fg-2);
 }
 #suggestions table {
   width: 100%;

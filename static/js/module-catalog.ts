@@ -10,7 +10,7 @@ export class Catalog {
         .then((response) => response.json())
         .then((data) => {
           this.catalog = data;
-          localStorage.setItem("catalog", JSON.stringify(data));
+          this.save();
           console.log("Initialised new catalog");
         });
     }

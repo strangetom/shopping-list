@@ -1,7 +1,9 @@
 import { ShoppingList } from "./module-shoppinglist.js";
 import { Catalog } from "./module-catalog.js";
+import { Bundles } from "./module-bundles.js";
 var shoppingList;
 var CATALOG = new Catalog();
+var BUNDLES = new Bundles();
 const ITEM_PATTERN = /(?<quantity>[\d\.]+\s)?(?<unit>(g|G|kg|Kg|ml|Ml|l|L)\s)?(?<name>.*)/;
 const categoryInfo = {
     "Bread & Pastries": { color: "#7c6f64", id: 0 },
@@ -20,7 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
     customElements.define("list-item", ListItem, {
         extends: "li",
     });
-    customElements.define("suggestion-item", SuggestionItem, {
+    customElements.define("suggestied-item", SuggestedItem, {
+        extends: "li",
+    });
+    customElements.define("suggested-bundle", SuggestedBundle, {
         extends: "li",
     });
     shoppingList = new ShoppingList();
@@ -175,7 +180,7 @@ class ListItem extends HTMLLIElement {
         }
     }
 }
-class SuggestionItem extends HTMLLIElement {
+class SuggestedItem extends HTMLLIElement {
     constructor(item, time, categoryId) {
         super();
         this.item = item;
@@ -274,6 +279,29 @@ class SuggestionItem extends HTMLLIElement {
         }
     }
 }
+class SuggestedBundle extends HTMLLIElement {
+    constructor(bundle) {
+        super();
+        this.bundle = bundle;
+        this.classList.add("suggestion");
+        this.classList.add("bundle");
+        this.dataset.bundle = this.bundle;
+        this.addEventListener("click", (e) => {
+            let addModal = document.querySelector("#new-item-dialog");
+            addModal.returnValue = "cancel";
+            addModal.close();
+            addNewBundleSuggestion(e);
+        });
+        let table = document.createElement("table");
+        this.appendChild(table);
+        let tr = document.createElement("tr");
+        table.appendChild(tr);
+        let h4 = document.createElement("h4");
+        h4.classList.add("suggestion-text");
+        h4.innerHTML = `&nbsp;&nbsp;Bundle: ${titleCase(this.bundle)}`;
+        tr.appendChild(h4);
+    }
+}
 function titleCase(text) {
     let str = text
         .toLowerCase()
@@ -302,21 +330,19 @@ function addNewItem() {
 }
 function suggestItems(event) {
     let suggestiondEl = document.querySelector("#suggestions");
+    suggestiondEl.replaceChildren();
     let fragment = event.target.value;
-    if (fragment == "") {
-        suggestiondEl.replaceChildren();
-    }
-    else {
-        let regexParts = ITEM_PATTERN.exec(fragment);
-        if (regexParts.groups.name != "") {
-            let suggestions = CATALOG.suggest(regexParts.groups.name);
-            if (Object.keys(suggestions).length > 0) {
-                suggestiondEl.replaceChildren();
-                for (let suggest of Object.entries(suggestions)) {
-                    let el = new SuggestionItem(suggest[0], suggest[1]["modified"], suggest[1]["category"]);
-                    suggestiondEl.appendChild(el);
-                }
-            }
+    let regexParts = ITEM_PATTERN.exec(fragment);
+    if (regexParts.groups.name != "") {
+        let bundles = BUNDLES.suggest(regexParts.groups.name);
+        for (let bundle of bundles) {
+            let el = new SuggestedBundle(bundle);
+            suggestiondEl.appendChild(el);
+        }
+        let suggestions = CATALOG.suggest(regexParts.groups.name);
+        for (let suggest of Object.entries(suggestions)) {
+            let el = new SuggestedItem(suggest[0], suggest[1]["modified"], suggest[1]["category"]);
+            suggestiondEl.appendChild(el);
         }
     }
 }
@@ -324,7 +350,6 @@ function addNewItemSuggestion(event) {
     let addModal = document.querySelector("#new-item-dialog");
     let name = addModal.querySelector("#name").value;
     let regexParts = ITEM_PATTERN.exec(name);
-    addModal.close();
     let selection = event.target.closest("li").dataset.item;
     let category = event.target.closest("li").dataset.category;
     let newItem = {
@@ -336,6 +361,13 @@ function addNewItemSuggestion(event) {
         done: false,
     };
     shoppingList.addItem(newItem);
+    populateList();
+}
+function addNewBundleSuggestion(event) {
+    let bundle = event.target.closest("li").dataset.bundle;
+    for (let item of BUNDLES.items(bundle)) {
+        shoppingList.addItem(item);
+    }
     populateList();
 }
 function createSVG(letter, bg_colour) {
