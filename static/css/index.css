@@ -24,6 +24,7 @@
   --orange-alt: #fe8019;
   --aqua: #689d6a;
   --aqua-alt: #8ec07c;
+  --brown: #B17744;
 }
 
 body {
@@ -111,7 +112,7 @@ ul {
  border-bottom: 2px solid var(--red);
 }
 .bread-pastries {
- border-bottom: 2px solid var(--bg-4); 
+ border-bottom: 2px solid var(--brown); 
 }
 .ingredients-spices {
   border-bottom: 2px solid var(--yellow);

@@ -6,7 +6,7 @@ var CATALOG = new Catalog();
 var BUNDLES = new Bundles();
 const ITEM_PATTERN = /(?<quantity>[\d\.]+\s)?(?<unit>(g|G|kg|Kg|ml|Ml|l|L)\s)?(?<name>.*)/;
 const categoryInfo = {
-    "Bread & Pastries": { color: "#7c6f64", id: 0 },
+    "Bread & Pastries": { color: "#b17744", id: 0 },
     "Fruits & Vegetables": { color: "#98971a", id: 1 },
     "Ingredients & Spices": { color: "#d79921", id: 2 },
     "Meat & Fish": { color: "#cc241d", id: 3 },
