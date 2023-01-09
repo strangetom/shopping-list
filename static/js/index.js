@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     customElements.define("list-item", ListItem, {
         extends: "li",
     });
-    customElements.define("suggestied-item", SuggestedItem, {
+    customElements.define("suggested-item", SuggestedItem, {
         extends: "li",
     });
     customElements.define("suggested-bundle", SuggestedBundle, {
@@ -42,7 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
     addModal.addEventListener("click", (event) => {
         if (event.target.nodeName === "DIALOG") {
             addModal.returnValue = "cancel";
-            addModal.close();
+            addModal.classList.add("dialog-hide");
+            addModal.addEventListener("animationend", removeDialogAnimation);
         }
     });
     let addItemInput = addModal.querySelector("#name");
@@ -159,7 +160,8 @@ class ListItem extends HTMLLIElement {
         editModal.addEventListener("click", (event) => {
             if (event.target.nodeName === "DIALOG") {
                 editModal.returnValue = "cancel";
-                editModal.close();
+                editModal.classList.add("dialog-hide");
+                editModal.addEventListener("animationend", removeDialogAnimation);
             }
         });
     }
@@ -192,7 +194,8 @@ class SuggestedItem extends HTMLLIElement {
         this.addEventListener("click", (e) => {
             let addModal = document.querySelector("#new-item-dialog");
             addModal.returnValue = "cancel";
-            addModal.close();
+            addModal.classList.add("dialog-hide");
+            addModal.addEventListener("animationend", removeDialogAnimation);
             addNewItemSuggestion(e);
         });
         let table = document.createElement("table");
@@ -289,7 +292,8 @@ class SuggestedBundle extends HTMLLIElement {
         this.addEventListener("click", (e) => {
             let addModal = document.querySelector("#new-item-dialog");
             addModal.returnValue = "cancel";
-            addModal.close();
+            addModal.classList.add("dialog-hide");
+            addModal.addEventListener("animationend", removeDialogAnimation);
             addNewBundleSuggestion(e);
         });
         let table = document.createElement("table");
@@ -396,6 +400,12 @@ function downloadCatalog() {
     link.setAttribute("href", catalogStr);
     link.setAttribute("download", "catalog.json");
     link.click();
+}
+function removeDialogAnimation(event) {
+    let el = event.target;
+    el.close();
+    el.classList.remove("dialog-hide");
+    el.removeEventListener("animationend", removeDialogAnimation);
 }
 function installServiceWorker() {
     if ("serviceWorker" in navigator) {

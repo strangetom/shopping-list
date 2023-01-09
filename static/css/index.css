@@ -301,3 +301,17 @@ input:focus {
   margin: auto 0;
   padding-right: .5rem;
 }
+
+dialog[open] {
+  animation: show .2s ease-out normal;
+}
+dialog.dialog-hide {
+  animation: hide .2s ease-out normal; 
+}
+@keyframes show {
+  from {transform: translateY(-100%);}
+  to {transform: translateY(0%);}
+}
+@keyframes hide {
+  to {transform: translateY(-100%);}
+}
