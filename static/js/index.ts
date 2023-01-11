@@ -10,7 +10,7 @@ const ITEM_PATTERN =
   /(?<quantity>[\d\.]+\s)?(?<unit>(g|G|kg|Kg|ml|Ml|l|L)\s)?(?<name>.*)/;
 
 const categoryInfo = {
-  "Bread & Pastries": { color: "#7c6f64", id: 0 },
+  "Bread & Pastries": { color: "#b17744", id: 0 },
   "Fruits & Vegetables": { color: "#98971a", id: 1 },
   "Ingredients & Spices": { color: "#d79921", id: 2 },
   "Meat & Fish": { color: "#cc241d", id: 3 },
@@ -22,12 +22,18 @@ const categoryInfo = {
   Uncategorized: { color: "#a89984", id: 9 },
 };
 
+const hideDialogAnimation = [{ transform: "translateY(-100%" }];
+const hideDialogTiming = {
+  duration: 100,
+  easing: "ease-out",
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   installServiceWorker();
   customElements.define("list-item", ListItem, {
     extends: "li",
   });
-  customElements.define("suggestied-item", SuggestedItem, {
+  customElements.define("suggested-item", SuggestedItem, {
     extends: "li",
   });
   customElements.define("suggested-bundle", SuggestedBundle, {
@@ -49,11 +55,21 @@ document.addEventListener("DOMContentLoaded", () => {
     addModal.showModal();
   });
   // Add item when new item dialog closed, unless background was clicked
-  addModal.addEventListener("close", addNewItem);
+  let submitBtn = addModal.querySelector("button[value='submit']");
+  submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    let animation = addModal.animate(hideDialogAnimation, hideDialogTiming);
+    animation.addEventListener("finish", () => {
+      addModal.close("submit");
+      addNewItem();
+    });
+  });
   addModal.addEventListener("click", (event) => {
     if ((event.target as HTMLElement).nodeName === "DIALOG") {
-      addModal.returnValue = "cancel";
-      addModal.close();
+      let animation = addModal.animate(hideDialogAnimation, hideDialogTiming);
+      animation.addEventListener("finish", () => {
+        addModal.close("cancel");
+      });
     }
   });
   // On typing in new item dialog, display suggestions based on text typed
@@ -225,11 +241,33 @@ class ListItem extends HTMLLIElement {
     editModal.showModal();
 
     // Add event listeners to for closing the dialog
-    editModal.addEventListener("close", this.edit.bind(this));
+    let submitBtn = editModal.querySelector("button[value='submit']");
+    submitBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      let animation = editModal.animate(hideDialogAnimation, hideDialogTiming);
+      animation.addEventListener("finish", () => {
+        editModal.close("submit");
+        this.edit();
+      });
+    });
+    let cancelBtn = editModal.querySelector("button[value='cancel']");
+    cancelBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      let animation = editModal.animate(hideDialogAnimation, hideDialogTiming);
+      animation.addEventListener("finish", () => {
+        editModal.close("cancel");
+        this.edit();
+      });
+    });
     editModal.addEventListener("click", (event) => {
       if ((event.target as HTMLElement).nodeName === "DIALOG") {
-        editModal.returnValue = "cancel";
-        editModal.close();
+        let animation = editModal.animate(
+          hideDialogAnimation,
+          hideDialogTiming
+        );
+        animation.addEventListener("finish", () => {
+          editModal.close("cancel");
+        });
       }
     });
   }
@@ -291,8 +329,10 @@ class SuggestedItem extends HTMLLIElement {
     this.addEventListener("click", (e) => {
       let addModal: HTMLDialogElement =
         document.querySelector("#new-item-dialog");
-      addModal.returnValue = "cancel";
-      addModal.close();
+      let animation = addModal.animate(hideDialogAnimation, hideDialogTiming);
+      animation.addEventListener("finish", () => {
+        addModal.close("cancel");
+      });
       addNewItemSuggestion(e);
     });
 
@@ -388,8 +428,10 @@ class SuggestedBundle extends HTMLLIElement {
     this.addEventListener("click", (e) => {
       let addModal: HTMLDialogElement =
         document.querySelector("#new-item-dialog");
-      addModal.returnValue = "cancel";
-      addModal.close();
+      let animation = addModal.animate(hideDialogAnimation, hideDialogTiming);
+      animation.addEventListener("finish", () => {
+        addModal.close("cancel");
+      });
       addNewBundleSuggestion(e);
     });
 
