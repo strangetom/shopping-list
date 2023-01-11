@@ -17,6 +17,11 @@ const categoryInfo = {
     "Snacks & Beverages": { color: "#b16286", id: 8 },
     Uncategorized: { color: "#a89984", id: 9 },
 };
+const hideDialogAnimation = [{ transform: "translateY(-100%" }];
+const hideDialogTiming = {
+    duration: 100,
+    easing: "ease-out",
+};
 document.addEventListener("DOMContentLoaded", () => {
     installServiceWorker();
     customElements.define("list-item", ListItem, {
@@ -38,12 +43,21 @@ document.addEventListener("DOMContentLoaded", () => {
         addModal.querySelector("#suggestions").replaceChildren();
         addModal.showModal();
     });
-    addModal.addEventListener("close", addNewItem);
+    let submitBtn = addModal.querySelector("button[value='submit']");
+    submitBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        let animation = addModal.animate(hideDialogAnimation, hideDialogTiming);
+        animation.addEventListener("finish", () => {
+            addModal.close("submit");
+            addNewItem();
+        });
+    });
     addModal.addEventListener("click", (event) => {
         if (event.target.nodeName === "DIALOG") {
-            addModal.returnValue = "cancel";
-            addModal.classList.add("dialog-hide");
-            addModal.addEventListener("animationend", removeDialogAnimation);
+            let animation = addModal.animate(hideDialogAnimation, hideDialogTiming);
+            animation.addEventListener("finish", () => {
+                addModal.close("cancel");
+            });
         }
     });
     let addItemInput = addModal.querySelector("#name");
@@ -156,12 +170,30 @@ class ListItem extends HTMLLIElement {
         editModal.querySelector("#category").value =
             this.data.category;
         editModal.showModal();
-        editModal.addEventListener("close", this.edit.bind(this));
+        let submitBtn = editModal.querySelector("button[value='submit']");
+        submitBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            let animation = editModal.animate(hideDialogAnimation, hideDialogTiming);
+            animation.addEventListener("finish", () => {
+                editModal.close("submit");
+                this.edit();
+            });
+        });
+        let cancelBtn = editModal.querySelector("button[value='cancel']");
+        cancelBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            let animation = editModal.animate(hideDialogAnimation, hideDialogTiming);
+            animation.addEventListener("finish", () => {
+                editModal.close("cancel");
+                this.edit();
+            });
+        });
         editModal.addEventListener("click", (event) => {
             if (event.target.nodeName === "DIALOG") {
-                editModal.returnValue = "cancel";
-                editModal.classList.add("dialog-hide");
-                editModal.addEventListener("animationend", removeDialogAnimation);
+                let animation = editModal.animate(hideDialogAnimation, hideDialogTiming);
+                animation.addEventListener("finish", () => {
+                    editModal.close("cancel");
+                });
             }
         });
     }
@@ -193,9 +225,10 @@ class SuggestedItem extends HTMLLIElement {
         this.dataset.category = this.category;
         this.addEventListener("click", (e) => {
             let addModal = document.querySelector("#new-item-dialog");
-            addModal.returnValue = "cancel";
-            addModal.classList.add("dialog-hide");
-            addModal.addEventListener("animationend", removeDialogAnimation);
+            let animation = addModal.animate(hideDialogAnimation, hideDialogTiming);
+            animation.addEventListener("finish", () => {
+                addModal.close("cancel");
+            });
             addNewItemSuggestion(e);
         });
         let table = document.createElement("table");
@@ -291,9 +324,10 @@ class SuggestedBundle extends HTMLLIElement {
         this.dataset.bundle = this.bundle;
         this.addEventListener("click", (e) => {
             let addModal = document.querySelector("#new-item-dialog");
-            addModal.returnValue = "cancel";
-            addModal.classList.add("dialog-hide");
-            addModal.addEventListener("animationend", removeDialogAnimation);
+            let animation = addModal.animate(hideDialogAnimation, hideDialogTiming);
+            animation.addEventListener("finish", () => {
+                addModal.close("cancel");
+            });
             addNewBundleSuggestion(e);
         });
         let table = document.createElement("table");
@@ -400,12 +434,6 @@ function downloadCatalog() {
     link.setAttribute("href", catalogStr);
     link.setAttribute("download", "catalog.json");
     link.click();
-}
-function removeDialogAnimation(event) {
-    let el = event.target;
-    el.close();
-    el.classList.remove("dialog-hide");
-    el.removeEventListener("animationend", removeDialogAnimation);
 }
 function installServiceWorker() {
     if ("serviceWorker" in navigator) {

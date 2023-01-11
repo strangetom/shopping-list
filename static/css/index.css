@@ -303,15 +303,9 @@ input:focus {
 }
 
 dialog[open] {
-  animation: show .2s ease-out normal;
-}
-dialog.dialog-hide {
-  animation: hide .2s ease-out normal; 
+  animation: show .1s ease-out normal;
 }
 @keyframes show {
   from {transform: translateY(-100%);}
   to {transform: translateY(0%);}
-}
-@keyframes hide {
-  to {transform: translateY(-100%);}
 }

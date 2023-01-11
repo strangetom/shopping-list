@@ -22,6 +22,12 @@ const categoryInfo = {
   Uncategorized: { color: "#a89984", id: 9 },
 };
 
+const hideDialogAnimation = [{ transform: "translateY(-100%" }];
+const hideDialogTiming = {
+  duration: 100,
+  easing: "ease-out",
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   installServiceWorker();
   customElements.define("list-item", ListItem, {
@@ -49,12 +55,21 @@ document.addEventListener("DOMContentLoaded", () => {
     addModal.showModal();
   });
   // Add item when new item dialog closed, unless background was clicked
-  addModal.addEventListener("close", addNewItem);
+  let submitBtn = addModal.querySelector("button[value='submit']");
+  submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    let animation = addModal.animate(hideDialogAnimation, hideDialogTiming);
+    animation.addEventListener("finish", () => {
+      addModal.close("submit");
+      addNewItem();
+    });
+  });
   addModal.addEventListener("click", (event) => {
     if ((event.target as HTMLElement).nodeName === "DIALOG") {
-      addModal.returnValue = "cancel";
-      addModal.classList.add("dialog-hide");
-      addModal.addEventListener("animationend", removeDialogAnimation);
+      let animation = addModal.animate(hideDialogAnimation, hideDialogTiming);
+      animation.addEventListener("finish", () => {
+        addModal.close("cancel");
+      });
     }
   });
   // On typing in new item dialog, display suggestions based on text typed
@@ -226,12 +241,33 @@ class ListItem extends HTMLLIElement {
     editModal.showModal();
 
     // Add event listeners to for closing the dialog
-    editModal.addEventListener("close", this.edit.bind(this));
+    let submitBtn = editModal.querySelector("button[value='submit']");
+    submitBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      let animation = editModal.animate(hideDialogAnimation, hideDialogTiming);
+      animation.addEventListener("finish", () => {
+        editModal.close("submit");
+        this.edit();
+      });
+    });
+    let cancelBtn = editModal.querySelector("button[value='cancel']");
+    cancelBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      let animation = editModal.animate(hideDialogAnimation, hideDialogTiming);
+      animation.addEventListener("finish", () => {
+        editModal.close("cancel");
+        this.edit();
+      });
+    });
     editModal.addEventListener("click", (event) => {
       if ((event.target as HTMLElement).nodeName === "DIALOG") {
-        editModal.returnValue = "cancel";
-        editModal.classList.add("dialog-hide");
-        editModal.addEventListener("animationend", removeDialogAnimation);
+        let animation = editModal.animate(
+          hideDialogAnimation,
+          hideDialogTiming
+        );
+        animation.addEventListener("finish", () => {
+          editModal.close("cancel");
+        });
       }
     });
   }
@@ -293,9 +329,10 @@ class SuggestedItem extends HTMLLIElement {
     this.addEventListener("click", (e) => {
       let addModal: HTMLDialogElement =
         document.querySelector("#new-item-dialog");
-      addModal.returnValue = "cancel";
-      addModal.classList.add("dialog-hide");
-      addModal.addEventListener("animationend", removeDialogAnimation);
+      let animation = addModal.animate(hideDialogAnimation, hideDialogTiming);
+      animation.addEventListener("finish", () => {
+        addModal.close("cancel");
+      });
       addNewItemSuggestion(e);
     });
 
@@ -391,9 +428,10 @@ class SuggestedBundle extends HTMLLIElement {
     this.addEventListener("click", (e) => {
       let addModal: HTMLDialogElement =
         document.querySelector("#new-item-dialog");
-      addModal.returnValue = "cancel";
-      addModal.classList.add("dialog-hide");
-      addModal.addEventListener("animationend", removeDialogAnimation);
+      let animation = addModal.animate(hideDialogAnimation, hideDialogTiming);
+      animation.addEventListener("finish", () => {
+        addModal.close("cancel");
+      });
       addNewBundleSuggestion(e);
     });
 
@@ -540,13 +578,6 @@ function downloadCatalog() {
   link.setAttribute("href", catalogStr);
   link.setAttribute("download", "catalog.json");
   link.click();
-}
-
-function removeDialogAnimation(event) {
-  let el = event.target;
-  el.close();
-  el.classList.remove("dialog-hide");
-  el.removeEventListener("animationend", removeDialogAnimation);
 }
 
 /**
