@@ -46,6 +46,7 @@ body {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
+  z-index: 1;
 }
 h1 {
   margin: 1rem;
