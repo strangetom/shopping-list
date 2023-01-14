@@ -21,6 +21,20 @@ const categoryInfo = {
   "Snacks & Beverages": { color: "#b16286", id: 8 },
   Uncategorized: { color: "#a89984", id: 9 },
 };
+/**
+ * Get ID for given category
+ * @param {string} name Category name
+ */
+function getCategoryId(name: string) {
+  return categoryInfo[name].id;
+}
+/**
+ * Get category name from id
+ * @param {number} index ID of category
+ */
+function getCategoryName(id: number) {
+  return Object.entries(categoryInfo).find((entry) => entry[1].id == id)[0];
+}
 
 const hideDialogAnimation = [{ transform: "translateY(-100%" }];
 const hideDialogTiming = {
@@ -82,6 +96,9 @@ document.addEventListener("DOMContentLoaded", () => {
   downloadBtn.addEventListener("click", downloadCatalog);
 });
 
+/**
+ * Populate displayed list using list sotred in local storage
+ */
 function populateList() {
   let listEl = document.querySelector("#list");
   listEl.replaceChildren();
@@ -317,9 +334,7 @@ class SuggestedItem extends HTMLLIElement {
     super();
 
     this.item = item;
-    this.category = Object.entries(categoryInfo).filter(
-      (el) => el[1].id == categoryId
-    )[0][0];
+    this.category = getCategoryName(categoryId);
     this.time = time;
 
     this.classList.add("suggestion");
@@ -448,6 +463,10 @@ class SuggestedBundle extends HTMLLIElement {
   }
 }
 
+/**
+ * Convert a string to title case
+ * @param {string} text Text to convert
+ */
 function titleCase(text: string) {
   let str = text
     .toLowerCase()
@@ -458,6 +477,9 @@ function titleCase(text: string) {
   return str.join(" ");
 }
 
+/**
+ * Add new item to list from text input to add dialog
+ */
 function addNewItem() {
   let addModal: HTMLDialogElement = document.querySelector("#new-item-dialog");
   if (addModal.returnValue == "submit") {
@@ -473,6 +495,13 @@ function addNewItem() {
       done: false,
     };
 
+    // If the item is already in the catalog, use the category stored in the catalog
+    if (CATALOG.includes(regexParts.groups.name)) {
+      let categoryId =
+        CATALOG.catalog[regexParts.groups.name.toLowerCase()].category;
+      newItem.category = getCategoryName(categoryId);
+    }
+
     shoppingList.addItem(newItem);
     populateList();
   }
@@ -480,9 +509,9 @@ function addNewItem() {
 
 /**
  * suggestItems callback, called when typing text into new item dialog
- * @param {[type]} event Input event for new item dialog
+ * @param {[Event]} event Input event for new item dialog
  */
-function suggestItems(event) {
+function suggestItems(event: Event) {
   let suggestiondEl = document.querySelector(
     "#suggestions"
   ) as HTMLUListElement;
@@ -508,16 +537,19 @@ function suggestItems(event) {
     }
   }
 }
-
-function addNewItemSuggestion(event) {
+/**
+ * Add a new item to list from suggested items
+ * @param {Event} event Event selecting item from suggestions
+ */
+function addNewItemSuggestion(event: Event) {
   // Extract any quantity and units from input box
   let addModal: HTMLDialogElement = document.querySelector("#new-item-dialog");
   let name = (addModal.querySelector("#name") as HTMLInputElement).value;
   let regexParts = ITEM_PATTERN.exec(name);
 
   // Get item name from selected suggestion
-  let selection = event.target.closest("li").dataset.item;
-  let category = event.target.closest("li").dataset.category;
+  let selection = (event.target as HTMLElement).closest("li").dataset.item;
+  let category = (event.target as HTMLElement).closest("li").dataset.category;
 
   let newItem = {
     item: titleCase(selection),
@@ -532,8 +564,12 @@ function addNewItemSuggestion(event) {
   populateList();
 }
 
-function addNewBundleSuggestion(event) {
-  let bundle = event.target.closest("li").dataset.bundle;
+/**
+ * Add all items from selected bundle to list
+ * @param {Event} event Event selecting bundle
+ */
+function addNewBundleSuggestion(event: Event) {
+  let bundle = (event.target as HTMLElement).closest("li").dataset.bundle;
 
   for (let item of BUNDLES.items(bundle)) {
     shoppingList.addItem(item);
@@ -541,6 +577,11 @@ function addNewBundleSuggestion(event) {
   populateList();
 }
 
+/**
+ * Create SVG icon for item using starting letter and category colour
+ * @param {string} letter    Start letter of item
+ * @param {string} bg_colour Color for icon background
+ */
 function createSVG(letter: string, bg_colour: string) {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   const circle = document.createElementNS(
@@ -569,6 +610,9 @@ function createSVG(letter: string, bg_colour: string) {
   return svg;
 }
 
+/**
+ * Download stored catalog as JSON file
+ */
 function downloadCatalog() {
   var catalogStr =
     "data:text/json;charset=utf-8," +

@@ -18,6 +18,9 @@ export class Catalog {
     save() {
         localStorage.setItem("catalog", JSON.stringify(this.catalog));
     }
+    includes(name) {
+        return Object.keys(this.catalog).includes(name.toLowerCase());
+    }
     suggest(fragment) {
         let filteredItems = Object.fromEntries(Object.entries(this.catalog).filter(([key]) => key.startsWith(fragment.toLowerCase())));
         let sortedFilteredItems = Object.entries(filteredItems).sort(function compareFn(a, b) {

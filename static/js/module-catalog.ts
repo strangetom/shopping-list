@@ -21,6 +21,14 @@ export class Catalog {
   }
 
   /**
+   * Return true if name is in catalog
+   * @param {string} name Name of item to check
+   */
+  includes(name: string) {
+    return Object.keys(this.catalog).includes(name.toLowerCase());
+  }
+
+  /**
    * Suggest items from catalog that start with fragment,
    * sorted by most recently added.
    * @param {string} fragment Fragment of text used to match suggestion

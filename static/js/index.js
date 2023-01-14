@@ -17,6 +17,12 @@ const categoryInfo = {
     "Snacks & Beverages": { color: "#b16286", id: 8 },
     Uncategorized: { color: "#a89984", id: 9 },
 };
+function getCategoryId(name) {
+    return categoryInfo[name].id;
+}
+function getCategoryName(id) {
+    return Object.entries(categoryInfo).find((entry) => entry[1].id == id)[0];
+}
 const hideDialogAnimation = [{ transform: "translateY(-100%" }];
 const hideDialogTiming = {
     duration: 100,
@@ -218,7 +224,7 @@ class SuggestedItem extends HTMLLIElement {
     constructor(item, time, categoryId) {
         super();
         this.item = item;
-        this.category = Object.entries(categoryInfo).filter((el) => el[1].id == categoryId)[0][0];
+        this.category = getCategoryName(categoryId);
         this.time = time;
         this.classList.add("suggestion");
         this.dataset.item = this.item;
@@ -362,6 +368,10 @@ function addNewItem() {
             category: "Uncategorized",
             done: false,
         };
+        if (CATALOG.includes(regexParts.groups.name)) {
+            let categoryId = CATALOG.catalog[regexParts.groups.name.toLowerCase()].category;
+            newItem.category = getCategoryName(categoryId);
+        }
         shoppingList.addItem(newItem);
         populateList();
     }
