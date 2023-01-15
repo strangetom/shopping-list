@@ -3,26 +3,14 @@
 /* A version number is useful when updating the worker logic,
    allowing you to remove outdated cache entries during the update.
 */
-const VERSION = 'v1::';
-
-const OFFLINE_FUNDAMENTALS = [
-  "/",
-  "/static/css/index.css",
-  "/static/js/index.js",
-];
+const VERSION = 'v2::';
 
 /* The install event fires when the service worker is first installed.
    You can use this event to prepare the service worker to be able to serve
    files while visitors are offline.
 */
 self.addEventListener("install", function(event) {
-  event.waitUntil(
-    caches
-      .open(VERSION + "cached")
-      .then(function(cache) {
-        return cache.addAll(OFFLINE_FUNDAMENTALS);
-      })
-    )
+  console.log('Service worker installed')
 });
 
 self.addEventListener("fetch", function(event) {
