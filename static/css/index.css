@@ -139,6 +139,7 @@ ul {
 
 .item {
   background-color: var(--bg-s);
+  transition: background-color .5s, filter .5s;
 }
 .item table {
   width: 100%;
