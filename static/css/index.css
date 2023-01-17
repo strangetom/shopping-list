@@ -32,7 +32,6 @@ body {
   color: var(--fg);
   background-color: var(--bg); 
   margin: 0 auto;
-  margin-bottom: 5rem;
   max-width: 80ch;
   -webkit-font-smoothing: antialiased;
 }
@@ -58,22 +57,23 @@ h1 {
   display: block;
 }
 #download-catalog img {
-  width: 1.8rem;
+  width: 1.3rem;
   padding: 1rem;
 }
 
 #fab {
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  width: 3.5rem;
-  height: 3.5rem;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3.8rem;
+  height: 3.8rem;
   border: none;
   border-radius: 3rem;
   background-color: var(--fg);
   color: var(--bg-1);
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 100;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 255, 255, 0.15);
 }
 #bundle {
   position: fixed;
@@ -139,7 +139,7 @@ ul {
 
 .item {
   background-color: var(--bg-s);
-  transition: background-color .5s, filter .5s;
+  transition: background-color .2s, filter .2s;
 }
 .item table {
   width: 100%;
@@ -189,7 +189,7 @@ input:focus {
   outline: none;
 }
 #edit-item-dialog {
-  width: 90vw;
+  width: 85vw;
   max-width: 70ch;
   background-color: var(--fg);
   border: none;
@@ -208,7 +208,7 @@ input:focus {
 .edit-input input,
 .edit-input select {
   box-sizing: border-box;
-  font-size: 1rem;
+  font-size: 1.1rem;
   border: none;
   border-radius: .2rem;
   padding: .5rem;
@@ -231,6 +231,7 @@ input:focus {
 }
 #edit-item-dialog button {
   font-family: sans-serif;
+  font-size: 1rem;
   text-align: center;
   border: 1px solid var(--purple-alt);
   border-radius: .25rem;
@@ -240,18 +241,18 @@ input:focus {
 }
 
 #new-item-dialog {
-  width: 90vw;
+  width: 94vw;
   max-width: 70ch;
   border: none;
   background: none;
+  padding: 0;
   margin-top: 2vh;
 }
 #new-item-dialog div {
   display: flex;
 }
 #new-item-dialog input {
-  box-sizing: border-box;
-  font-size: 1rem;
+  font-size: 1.5rem;
   border: none;
   border-radius: .2rem 0 0 .2rem;
   padding: .5rem;
@@ -259,7 +260,7 @@ input:focus {
   color: var(--bg);
   word-break: break-word;
   /*The 3.5 rem = 2*0.5rem from the padding on the input and 2.5 rem from the width of the button*/
-  width: calc(100vw - 3.5rem);
+  width: calc(94vw - 3.5rem);
 }
 #new-item-dialog button {
   border-radius: 0 .2rem .2rem 0;
@@ -278,16 +279,17 @@ input:focus {
   background-color: var(--fg);
   color: var(--bg);
   border-radius: .2rem;
+  font-size: 1.2rem;
 }
 #suggestions .bundle {
   background-color: var(--fg-2);
 }
 #suggestions table {
   width: 100%;
-  height: 2.2rem;
+  height: 2.5rem;
 }
 #suggestions .suggestion-icon {
-  width: 1.3rem;
+  width: 1.5rem;
   vertical-align: middle;
   padding-top: 3px;  
 }
@@ -295,7 +297,7 @@ input:focus {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding-top: 3px;
+  padding-top: 5px;
 }
 #suggestions small {
   font-size: .7rem;
