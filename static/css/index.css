@@ -191,6 +191,7 @@ input:focus {
 #edit-item-dialog {
   width: 85vw;
   max-width: 70ch;
+  color: var(--bg);
   background-color: var(--fg);
   border: none;
   margin-top: 2vh;
