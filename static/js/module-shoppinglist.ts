@@ -52,6 +52,15 @@ export class ShoppingList {
     this.currentList = purgedList;
     this.save();
   }
+
+  /**
+   * Remove specific item from shopping list
+   * @param {number} index Index of item to remove from list
+   */
+  removeItem(index: number) {
+    this.currentList.splice(index, 1);
+    this.save();
+  }
 }
 
 export interface ItemData {

@@ -228,7 +228,7 @@ input:focus {
   margin-top: 1rem;
   text-align: right;
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 #edit-item-dialog button {
   font-family: sans-serif;
@@ -239,6 +239,9 @@ input:focus {
   padding: .5rem .8rem;
   margin: 0 .2rem;
   background-color: var(--purple);
+}
+#edit-item-dialog button[value="delete"] {
+  background-color: var(--red-alt);
 }
 
 #new-item-dialog {

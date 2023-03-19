@@ -35,4 +35,8 @@ export class Catalog {
         };
         this.save();
     }
+    delete(item) {
+        delete this.catalog[item.toLowerCase()];
+        this.save();
+    }
 }

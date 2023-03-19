@@ -28,4 +28,8 @@ export class ShoppingList {
         this.currentList = purgedList;
         this.save();
     }
+    removeItem(index) {
+        this.currentList.splice(index, 1);
+        this.save();
+    }
 }

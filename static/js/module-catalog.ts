@@ -62,4 +62,13 @@ export class Catalog {
     };
     this.save();
   }
+
+  /**
+   * Delete item from catalog
+   * @param {string} item Item name
+   */
+  delete(item: string) {
+    delete this.catalog[item.toLowerCase()];
+    this.save();
+  }
 }

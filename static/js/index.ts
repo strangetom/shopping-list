@@ -144,6 +144,9 @@ class ListItem extends HTMLLIElement {
     this.index = index;
 
     this.classList.add("item");
+    if (this.data.done) {
+      this.classList.add("done");
+    }
 
     let table = document.createElement("table");
     this.appendChild(table);
@@ -276,6 +279,15 @@ class ListItem extends HTMLLIElement {
         this.edit();
       });
     });
+    let deleteBtn = editModal.querySelector("button[value='delete']");
+    deleteBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      let animation = editModal.animate(hideDialogAnimation, hideDialogTiming);
+      animation.addEventListener("finish", () => {
+        editModal.close("delete");
+        this.edit();
+      });
+    });
     editModal.addEventListener("click", (event) => {
       if ((event.target as HTMLElement).nodeName === "DIALOG") {
         let animation = editModal.animate(
@@ -319,6 +331,12 @@ class ListItem extends HTMLLIElement {
       shoppingList.save();
 
       if (previous_category != this.data.category) {
+        populateList();
+      }
+    } else if (editModal.returnValue == "delete") {
+      if (window.confirm(`Remove ${this.data.item} from catalog?`)) {
+        CATALOG.delete(this.data.item);
+        shoppingList.removeItem(this.index);
         populateList();
       }
     }
