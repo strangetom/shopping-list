@@ -504,10 +504,13 @@ function addNewItem() {
     let name = (addModal.querySelector("#name") as HTMLInputElement).value;
     let regexParts = ITEM_PATTERN.exec(name);
 
+    let quantity = regexParts.groups.quantity || ""
+    let units = regexParts.groups.unit || ""
+
     let newItem = {
       item: titleCase(regexParts.groups.name),
-      quantity: regexParts.groups.quantity || "",
-      units: regexParts.groups.unit || "",
+      quantity: quantity.trim(),
+      units: units.trim(),
       notes: "",
       category: "Uncategorized",
       done: false,
@@ -569,10 +572,13 @@ function addNewItemSuggestion(event: Event) {
   let selection = (event.target as HTMLElement).closest("li").dataset.item;
   let category = (event.target as HTMLElement).closest("li").dataset.category;
 
+  let quantity = regexParts.groups.quantity || ""
+  let units = regexParts.groups.unit || ""
+
   let newItem = {
     item: titleCase(selection),
-    quantity: regexParts.groups.quantity || "",
-    units: regexParts.groups.unit || "",
+    quantity: quantity.trim(),
+    units: units.trim(),
     notes: "",
     category: category,
     done: false,
