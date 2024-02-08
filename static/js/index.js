@@ -426,7 +426,7 @@ function addNewItemSuggestion(event) {
     let newItem = {
         item: titleCase(selection),
         quantity: quantity.trim(),
-        units: units.trim(),
+        units: validateUnit(units.trim()),
         notes: "",
         category: category,
         done: false,
@@ -467,6 +467,21 @@ function downloadCatalog() {
     link.setAttribute("href", catalogStr);
     link.setAttribute("download", "catalog.json");
     link.click();
+}
+function validateUnit(unit) {
+    if (unit == "G") {
+        return "g";
+    }
+    else if (unit == "ML") {
+        return "ml";
+    }
+    else if (unit == "Kg") {
+        return "kg";
+    }
+    else if (unit == "l") {
+        return "L";
+    }
+    return unit;
 }
 function installServiceWorker() {
     if ("serviceWorker" in navigator) {

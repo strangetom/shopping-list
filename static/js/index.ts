@@ -578,7 +578,7 @@ function addNewItemSuggestion(event: Event) {
   let newItem = {
     item: titleCase(selection),
     quantity: quantity.trim(),
-    units: units.trim(),
+    units: validateUnit(units.trim()),
     notes: "",
     category: category,
     done: false,
@@ -646,6 +646,24 @@ function downloadCatalog() {
   link.setAttribute("href", catalogStr);
   link.setAttribute("download", "catalog.json");
   link.click();
+}
+
+/**
+ * Convert user input unit to valid unit.
+ * @param {string} unit User input unit
+ */
+function validateUnit(unit: string) {
+  if (unit == "G") {
+    return "g"
+  }else if (unit == "ML") {
+    return "ml"
+  }else if (unit == "Kg") {
+    return "kg"
+  }else if (unit == "l") {
+    return "L"
+  }
+
+  return unit
 }
 
 /**
