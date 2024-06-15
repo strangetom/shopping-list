@@ -6,16 +6,19 @@ var CATALOG = new Catalog();
 var BUNDLES = new Bundles();
 const ITEM_PATTERN = /(?<quantity>[\d\.]+\s)?(?<unit>(g|G|kg|Kg|ml|Ml|l|L)\s)?(?<name>.*)/;
 const categoryInfo = {
-    "Bread & Pastries": { color: "#b17744", id: 0 },
-    "Fruits & Vegetables": { color: "#98971a", id: 1 },
-    "Ingredients & Spices": { color: "#d79921", id: 2 },
-    "Meat & Fish": { color: "#cc241d", id: 3 },
-    Medicine: { color: "#689d6a", id: 4 },
-    "Non-Food Items": { color: "#d65d0e", id: 5 },
-    "Other Food Items": { color: "#83a598", id: 6 },
-    "Refrigerated & Frozen": { color: "#458588", id: 7 },
+    "Fresh Fruits & Vegetables": { color: "#98971a", id: 0 },
+    "Meat & Fish": { color: "#cc241d", id: 1 },
+    "Refrigerated": { color: "#458588", id: 2 },
+    "Rice & Pasta": { color: "#458588", id: 3 },
+    "Dried, Canned, Jarred": { color: "#98971a", id: 4 },
+    "Medicine": { color: "#689d6a", id: 5 },
+    "Ingredients & Spices": { color: "#d79921", id: 6 },
+    "Other Food Items": { color: "#83a598", id: 7 },
     "Snacks & Beverages": { color: "#b16286", id: 8 },
-    Uncategorized: { color: "#a89984", id: 9 },
+    "Bread & Pastries": { color: "#b17744", id: 9 },
+    "Frozen": { color: "#458588", id: 10 },
+    "Non-Food Items": { color: "#d65d0e", id: 11 },
+    "Uncategorized": { color: "#a89984", id: 12 },
 };
 function getCategoryId(name) {
     return categoryInfo[name].id;

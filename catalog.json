@@ -12,12 +12,12 @@
     "almond milk":
     {
         "modified": 1672155789875,
-        "category": 7
+        "category": 2
     },
     "anchovy fillets":
     {
         "modified": 1664477857888,
-        "category": 3
+        "category": 1
     },
     "annatto seeds":
     {
@@ -47,22 +47,22 @@
     "apples":
     {
         "modified": 1673729192906,
-        "category": 1
+        "category": 0
     },
     "arborio rice":
     {
         "modified": 1652630311542,
-        "category": 6
+        "category": 3
     },
     "asparagus":
     {
         "modified": 1651312064001,
-        "category": 1
+        "category": 0
     },
     "aubergine":
     {
         "modified": 1658340557320,
-        "category": 1
+        "category": 0
     },
     "aveeno":
     {
@@ -72,17 +72,12 @@
     "avocado":
     {
         "modified": 1660943072592,
-        "category": 1
-    },
-    "avocados":
-    {
-        "modified": 1493395018950,
-        "category": 1
+        "category": 0
     },
     "baby carrots":
     {
         "modified": 1490715837836,
-        "category": 1
+        "category": 0
     },
     "baby plum tomato les":
     {
@@ -92,22 +87,22 @@
     "baby plum tomatoes":
     {
         "modified": 1595417713672,
-        "category": 1
+        "category": 0
     },
     "baby spinach":
     {
         "modified": 1664477857861,
-        "category": 1
+        "category": 0
     },
     "baby sweetcorn":
     {
         "modified": 1542981496358,
-        "category": 1
+        "category": 0
     },
     "bacon":
     {
         "modified": 1658604165187,
-        "category": 3
+        "category": 1
     },
     "baguette":
     {
@@ -117,7 +112,7 @@
     "baking potatoes":
     {
         "modified": 1653652016533,
-        "category": 1
+        "category": 0
     },
     "baking powder":
     {
@@ -147,42 +142,37 @@
     "basmati rice":
     {
         "modified": 1664998802308,
-        "category": 6
+        "category": 3
     },
     "bbq sauce":
     {
         "modified": 1677836340866,
         "category": 2
     },
-    "bean sprouts":
-    {
-        "modified": 1527952259913,
-        "category": 1
-    },
     "beansprouts":
     {
         "modified": 1626448187738,
-        "category": 1
+        "category": 0
     },
     "beef brisket":
     {
         "modified": 1667801573889,
-        "category": 3
+        "category": 1
     },
     "beef fillets":
     {
         "modified": 1500614312739,
-        "category": 3
+        "category": 1
     },
     "beef shin":
     {
         "modified": 1634988646192,
-        "category": 3
+        "category": 1
     },
     "beef skirt":
     {
         "modified": 1570193664699,
-        "category": 3
+        "category": 1
     },
     "beef stock cubes":
     {
@@ -207,7 +197,7 @@
     "black beans":
     {
         "modified": 1675431263202,
-        "category": 1
+        "category": 10
     },
     "black limes":
     {
@@ -222,7 +212,7 @@
     "blackberries":
     {
         "modified": 1661454765175,
-        "category": 1
+        "category": 0
     },
     "bleach":
     {
@@ -232,12 +222,12 @@
     "blue cheese":
     {
         "modified": 1595584917670,
-        "category": 7
+        "category": 2
     },
     "bok choy":
     {
         "modified": 1617557644349,
-        "category": 1
+        "category": 0
     },
     "bolognese sauce":
     {
@@ -247,12 +237,12 @@
     "braeburn apples":
     {
         "modified": 1651091028748,
-        "category": 1
+        "category": 0
     },
     "braising steak":
     {
         "modified": 1598284136975,
-        "category": 3
+        "category": 1
     },
     "bread":
     {
@@ -271,7 +261,7 @@
     },
     "bread rolls":
     {
-        "modified": 1677836784433,
+        "modified": 1718366008666,
         "category": 0
     },
     "breadcrumbs":
@@ -281,13 +271,13 @@
     },
     "breakfast bars":
     {
-        "modified": 1677836467024,
+        "modified": 1718365923711,
         "category": 8
     },
     "brie":
     {
         "modified": 1510392885270,
-        "category": 7
+        "category": 2
     },
     "brioche":
     {
@@ -302,17 +292,17 @@
     "broad beans":
     {
         "modified": 1579447300650,
-        "category": 1
+        "category": 0
     },
     "broccoli":
     {
-        "modified": 1662700516432,
-        "category": 1
+        "modified": 1718365593344,
+        "category": 0
     },
     "brown lentils":
     {
         "modified": 1673615871173,
-        "category": 1
+        "category": 10
     },
     "brown parcel paper":
     {
@@ -322,12 +312,12 @@
     "brown rice":
     {
         "modified": 1646333828329,
-        "category": 6
+        "category": 3
     },
     "brown sugar":
     {
         "modified": 1642265655594,
-        "category": 2
+        "category": 5
     },
     "burger buns":
     {
@@ -337,42 +327,42 @@
     "burgers":
     {
         "modified": 1627654883814,
-        "category": 3
+        "category": 1
     },
     "butter":
     {
         "modified": 1673615729300,
-        "category": 7
+        "category": 2
     },
     "butter beans":
     {
         "modified": 1670710261438,
-        "category": 1
+        "category": 10
     },
     "buttermilk":
     {
         "modified": 1644051732992,
-        "category": 7
+        "category": 2
     },
     "butternut squash":
     {
         "modified": 1636044567302,
-        "category": 1
+        "category": 0
     },
     "button mushrooms":
     {
         "modified": 1648802097466,
-        "category": 1
+        "category": 0
     },
     "cabbage":
     {
         "modified": 1644051732916,
-        "category": 1
+        "category": 0
     },
     "caciovallo":
     {
         "modified": 1652981744648,
-        "category": 7
+        "category": 2
     },
     "cake tins":
     {
@@ -382,17 +372,17 @@
     "canned tuna":
     {
         "modified": 1651949790134,
-        "category": 7
+        "category": 2
     },
     "cannellini beans":
     {
         "modified": 1659733111430,
-        "category": 1
+        "category": 10
     },
     "capellini":
     {
         "modified": 1518790331142,
-        "category": 6
+        "category": 3
     },
     "capers":
     {
@@ -412,7 +402,7 @@
     "carrot":
     {
         "modified": 1666857248695,
-        "category": 1
+        "category": 0
     },
     "cashews":
     {
@@ -427,12 +417,12 @@
     "cauliflower":
     {
         "modified": 1677836015305,
-        "category": 1
+        "category": 0
     },
     "cavolo nero":
     {
         "modified": 1632564852611,
-        "category": 1
+        "category": 0
     },
     "cayenne pepper":
     {
@@ -442,12 +432,12 @@
     "celeriac":
     {
         "modified": 1578067855089,
-        "category": 1
+        "category": 0
     },
     "celery":
     {
         "modified": 1668278427227,
-        "category": 1
+        "category": 0
     },
     "cereal":
     {
@@ -462,12 +452,12 @@
     "cheddar":
     {
         "modified": 1634235225636,
-        "category": 7
+        "category": 2
     },
     "cheese":
     {
         "modified": 1603695516208,
-        "category": 7
+        "category": 2
     },
     "cheese sauce":
     {
@@ -477,17 +467,17 @@
     "cheese slices":
     {
         "modified": 1649683977625,
-        "category": 7
+        "category": 2
     },
     "cherry tomatoes":
     {
         "modified": 1676033169259,
-        "category": 1
+        "category": 0
     },
     "chestnut mushrooms":
     {
         "modified": 1670710261441,
-        "category": 1
+        "category": 0
     },
     "chia seeds":
     {
@@ -497,27 +487,27 @@
     "chicken":
     {
         "modified": 1672233231527,
-        "category": 3
+        "category": 1
     },
     "chicken breast":
     {
         "modified": 1674824916905,
-        "category": 3
+        "category": 1
     },
     "chicken drumsticks":
     {
         "modified": 1503513534652,
-        "category": 3
+        "category": 1
     },
     "chicken fillets":
     {
         "modified": 1670710261483,
-        "category": 3
+        "category": 1
     },
     "chicken kievs":
     {
         "modified": 1633245198113,
-        "category": 7
+        "category": 11
     },
     "chicken stock cubes":
     {
@@ -527,7 +517,7 @@
     "chicken thigh":
     {
         "modified": 1674219335467,
-        "category": 3
+        "category": 1
     },
     "chickpea flour":
     {
@@ -557,7 +547,7 @@
     "chinese cabbage":
     {
         "modified": 1577450838566,
-        "category": 1
+        "category": 0
     },
     "chipotle paste":
     {
@@ -567,12 +557,12 @@
     "chips":
     {
         "modified": 1673011252702,
-        "category": 7
+        "category": 11
     },
     "chives":
     {
         "modified": 1673010768419,
-        "category": 1
+        "category": 0
     },
     "chocolate chips":
     {
@@ -592,7 +582,7 @@
     "chorizo":
     {
         "modified": 1660573928737,
-        "category": 3
+        "category": 1
     },
     "ciabatta":
     {
@@ -622,7 +612,7 @@
     "clementine":
     {
         "modified": 1577648022044,
-        "category": 1
+        "category": 0
     },
     "clothes":
     {
@@ -652,7 +642,7 @@
     "cod fillets":
     {
         "modified": 1649683977582,
-        "category": 3
+        "category": 1
     },
     "coffee":
     {
@@ -662,7 +652,7 @@
     "colby jack cheese":
     {
         "modified": 1594655078086,
-        "category": 7
+        "category": 2
     },
     "command hooks":
     {
@@ -677,12 +667,12 @@
     "coriander":
     {
         "modified": 1677247423983,
-        "category": 1
+        "category": 0
     },
     "coriander leaf":
     {
         "modified": 1587621384254,
-        "category": 1
+        "category": 0
     },
     "coriander seeds":
     {
@@ -692,12 +682,12 @@
     "coriander stalks":
     {
         "modified": 1544865625134,
-        "category": 1
+        "category": 0
     },
     "corn":
     {
         "modified": 1651312064010,
-        "category": 1
+        "category": 10
     },
     "corn chips":
     {
@@ -722,22 +712,12 @@
     "courgette":
     {
         "modified": 1663876059743,
-        "category": 1
-    },
-    "courgette ":
-    {
-        "modified": 1595584917636,
-        "category": 1
-    },
-    "courgettes":
-    {
-        "modified": 1,
-        "category": 9
+        "category": 0
     },
     "couscous":
     {
         "modified": 1654627680991,
-        "category": 6
+        "category": 3
     },
     "cr2032 battery":
     {
@@ -747,12 +727,12 @@
     "cream cheese":
     {
         "modified": 1607173604759,
-        "category": 7
+        "category": 2
     },
     "creme fraiche":
     {
-        "modified": 1674825115516,
-        "category": 7
+        "modified": 1718365825289,
+        "category": 2
     },
     "crisps":
     {
@@ -772,17 +752,17 @@
     "cucumber":
     {
         "modified": 1658604165115,
-        "category": 1
+        "category": 0
     },
     "cumberland sausages":
     {
         "modified": 1539015292782,
-        "category": 3
+        "category": 1
     },
     "cumin":
     {
         "modified": 1599328727237,
-        "category": 6
+        "category": 2
     },
     "cumin seeds":
     {
@@ -807,7 +787,7 @@
     "custard":
     {
         "modified": 1651091028796,
-        "category": 7
+        "category": 2
     },
     "dark chocolate":
     {
@@ -817,7 +797,7 @@
     "dates":
     {
         "modified": 1632410651535,
-        "category": 1
+        "category": 0
     },
     "demerara sugar":
     {
@@ -832,17 +812,17 @@
     "desiccated coconut":
     {
         "modified": 1665747216433,
-        "category": 1
+        "category": 10
     },
     "diced lamb":
     {
         "modified": 1668278427260,
-        "category": 3
+        "category": 1
     },
     "diced beef":
     {
         "modified": 1600441366312,
-        "category": 3
+        "category": 1
     },
     "dijon mustard":
     {
@@ -852,7 +832,7 @@
     "dill":
     {
         "modified": 1663257892253,
-        "category": 1
+        "category": 0
     },
     "dishwasher salt":
     {
@@ -872,12 +852,12 @@
     "double cream":
     {
         "modified": 1666350411718,
-        "category": 7
+        "category": 2
     },
     "dried apricots":
     {
         "modified": 1657463998600,
-        "category": 1
+        "category": 10
     },
     "dried cherries":
     {
@@ -917,12 +897,12 @@
     "dried porcini mushrooms":
     {
         "modified": 1632484599253,
-        "category": 1
+        "category": 10
     },
     "dried shiitake mushrooms":
     {
         "modified": 1638302496546,
-        "category": 1
+        "category": 10
     },
     "dried shrimp":
     {
@@ -952,17 +932,17 @@
     "edamame beans":
     {
         "modified": 1565947428371,
-        "category": 1
+        "category": 10
     },
     "egg noodles":
     {
         "modified": 1568390273766,
-        "category": 6
+        "category": 3
     },
     "eggs":
     {
         "modified": 1677836636571,
-        "category": 7
+        "category": 2
     },
     "english mustard":
     {
@@ -982,32 +962,27 @@
     "farfalle":
     {
         "modified": 1510321385825,
-        "category": 6
+        "category": 3
     },
     "fennel bulb":
     {
         "modified": 1630049483361,
-        "category": 1
-    },
-    "fennel bulbs":
-    {
-        "modified": 1627654883774,
-        "category": 1
+        "category": 0
     },
     "feta":
     {
         "modified": 1673615746669,
-        "category": 7
+        "category": 2
     },
     "fettuccine":
     {
         "modified": 1572194980307,
-        "category": 6
+        "category": 3
     },
     "fillet steak":
     {
         "modified": 1579447300701,
-        "category": 3
+        "category": 1
     },
     "filo pastry sheets":
     {
@@ -1017,12 +992,12 @@
     "fish cakes":
     {
         "modified": 1662700516481,
-        "category": 7
+        "category": 11
     },
     "fish fingers":
     {
         "modified": 1651091028785,
-        "category": 7
+        "category": 11
     },
     "flageolet beans":
     {
@@ -1052,7 +1027,7 @@
     "fontina cheese":
     {
         "modified": 1544192806836,
-        "category": 7
+        "category": 2
     },
     "food bags":
     {
@@ -1067,42 +1042,42 @@
     "french fries":
     {
         "modified": 1651091028793,
-        "category": 7
+        "category": 11
     },
     "fresh parsley":
     {
         "modified": 1595417713670,
-        "category": 1
+        "category": 0
     },
     "fresh thyme":
     {
         "modified": 1664477857864,
-        "category": 1
+        "category": 0
     },
     "frozen peas":
     {
         "modified": 1652630311529,
-        "category": 7
+        "category": 11
     },
     "frozen salmon":
     {
         "modified": 1627654883826,
-        "category": 7
+        "category": 11
     },
     "frozen spinach":
     {
         "modified": 1666350411680,
-        "category": 1
+        "category": 11
     },
     "frozen vegetables":
     {
         "modified": 1590932647246,
-        "category": 7
+        "category": 11
     },
     "fruit":
     {
-        "modified": 1677835986625,
-        "category": 1
+        "modified": 1718365567565,
+        "category": 0
     },
     "frying pan":
     {
@@ -1117,7 +1092,7 @@
     "fusilli ":
     {
         "modified": 1617350036907,
-        "category": 6
+        "category": 3
     },
     "garam masala":
     {
@@ -1127,7 +1102,7 @@
     "garlic":
     {
         "modified": 1677247423228,
-        "category": 1
+        "category": 0
     },
     "garlic chilli paste":
     {
@@ -1157,12 +1132,12 @@
     "gherkins":
     {
         "modified": 1592324259357,
-        "category": 1
+        "category": 0
     },
     "ginger":
     {
         "modified": 1676033247812,
-        "category": 1
+        "category": 0
     },
     "glass cleaner":
     {
@@ -1177,7 +1152,7 @@
     "goats cheese":
     {
         "modified": 1585592757870,
-        "category": 7
+        "category": 2
     },
     "gochugaru":
     {
@@ -1217,32 +1192,32 @@
     "greek yoghurt":
     {
         "modified": 1672155789873,
-        "category": 7
+        "category": 2
     },
     "green beans":
     {
         "modified": 1674219281755,
-        "category": 1
+        "category": 0
     },
     "green chillies":
     {
         "modified": 1672155789832,
-        "category": 1
+        "category": 0
     },
     "green lentils":
     {
         "modified": 1641647584259,
-        "category": 1
+        "category": 10
     },
     "green pepper":
     {
         "modified": 1676033186309,
-        "category": 1
+        "category": 0
     },
     "green salad":
     {
         "modified": 1531201231901,
-        "category": 1
+        "category": 0
     },
     "ground almonds":
     {
@@ -1267,17 +1242,17 @@
     "grouper fillets":
     {
         "modified": 1651091028779,
-        "category": 3
+        "category": 1
     },
     "ham":
     {
         "modified": 1630049483421,
-        "category": 3
+        "category": 1
     },
     "ham hock":
     {
         "modified": 1651312064131,
-        "category": 3
+        "category": 1
     },
     "hand sanitizer":
     {
@@ -1297,7 +1272,7 @@
     "hickory smoked cheese":
     {
         "modified": 1614524136052,
-        "category": 7
+        "category": 2
     },
     "hoagie":
     {
@@ -1327,7 +1302,7 @@
     "ibuprofen":
     {
         "modified": 1618993964544,
-        "category": 4
+        "category": 5
     },
     "icing":
     {
@@ -1342,12 +1317,12 @@
     "jalapeno":
     {
         "modified": 1672052765736,
-        "category": 1
+        "category": 0
     },
     "jasmine rice":
     {
         "modified": 1618993964539,
-        "category": 6
+        "category": 3
     },
     "jerk sauce":
     {
@@ -1357,7 +1332,7 @@
     "kale":
     {
         "modified": 1649354091702,
-        "category": 1
+        "category": 0
     },
     "katsu stir fry sauce":
     {
@@ -1372,12 +1347,12 @@
     "kidney beans":
     {
         "modified": 1667801573810,
-        "category": 1
+        "category": 10
     },
     "kidney beans in chilli sauce ":
     {
         "modified": 1539015292617,
-        "category": 1
+        "category": 10
     },
     "kimchi":
     {
@@ -1387,7 +1362,7 @@
     "king prawns":
     {
         "modified": 1588623335641,
-        "category": 3
+        "category": 1
     },
     "kitchen roll":
     {
@@ -1407,12 +1382,12 @@
     "lamb chops":
     {
         "modified": 1590932647235,
-        "category": 3
+        "category": 1
     },
     "lamb cutlets":
     {
         "modified": 1590428044239,
-        "category": 3
+        "category": 1
     },
     "lamb cuts":
     {
@@ -1422,22 +1397,22 @@
     "lamb roast":
     {
         "modified": 1666857248726,
-        "category": 3
+        "category": 1
     },
     "lamb steaks":
     {
         "modified": 1677247462915,
-        "category": 3
+        "category": 1
     },
     "large eggs":
     {
         "modified": 1642265655641,
-        "category": 7
+        "category": 2
     },
     "lasagne sheets":
     {
         "modified": 1589717021469,
-        "category": 6
+        "category": 3
     },
     "lavash bread":
     {
@@ -1452,12 +1427,12 @@
     "leek":
     {
         "modified": 1660943072572,
-        "category": 1
+        "category": 0
     },
     "lemon":
     {
-        "modified": 1677247317147,
-        "category": 1
+        "modified": 1718365568867,
+        "category": 0
     },
     "lemon curd":
     {
@@ -1477,12 +1452,12 @@
     "lentils":
     {
         "modified": 1529132240167,
-        "category": 1
+        "category": 10
     },
     "lettuce":
     {
         "modified": 1675430810989,
-        "category": 1
+        "category": 0
     },
     "light bulbs":
     {
@@ -1497,7 +1472,7 @@
     "lime":
     {
         "modified": 1677835985847,
-        "category": 1
+        "category": 0
     },
     "lime juice":
     {
@@ -1512,47 +1487,47 @@
     "linguine":
     {
         "modified": 1647605509695,
-        "category": 6
+        "category": 3
     },
     "long grain rice":
     {
         "modified": 1611330936195,
-        "category": 6
+        "category": 3
     },
     "long pepper":
     {
         "modified": 1660573928652,
-        "category": 1
+        "category": 0
     },
     "loratadine":
     {
         "modified": 1570266834329,
-        "category": 4
+        "category": 5
     },
     "low-fat yoghurt":
     {
         "modified": 1599819060854,
-        "category": 7
+        "category": 2
     },
     "macaroni noodles":
     {
         "modified": 1630049483433,
-        "category": 6
+        "category": 3
     },
     "manchego":
     {
         "modified": 1557467099985,
-        "category": 7
+        "category": 2
     },
     "mangetout":
     {
         "modified": 1646333828275,
-        "category": 1
+        "category": 0
     },
     "mango":
     {
         "modified": 1676033141185,
-        "category": 1
+        "category": 0
     },
     "mango chutney":
     {
@@ -1572,7 +1547,7 @@
     "margarine":
     {
         "modified": 1516378050074,
-        "category": 7
+        "category": 2
     },
     "marinara":
     {
@@ -1582,7 +1557,7 @@
     "mascarpone":
     {
         "modified": 1656190990461,
-        "category": 7
+        "category": 2
     },
     "mayonnaise":
     {
@@ -1597,7 +1572,7 @@
     "meatballs":
     {
         "modified": 1630130715023,
-        "category": 3
+        "category": 1
     },
     "microfiber cloths":
     {
@@ -1607,7 +1582,7 @@
     "milk":
     {
         "modified": 1661788027726,
-        "category": 7
+        "category": 2
     },
     "milk powder":
     {
@@ -1617,27 +1592,27 @@
     "minced beef":
     {
         "modified": 1676033388325,
-        "category": 3
+        "category": 1
     },
     "minced chicken":
     {
         "modified": 1654627680953,
-        "category": 3
+        "category": 1
     },
     "minced lamb":
     {
         "modified": 1667801573895,
-        "category": 3
+        "category": 1
     },
     "minced pork":
     {
         "modified": 1675430927879,
-        "category": 3
+        "category": 1
     },
     "minced turkey":
     {
         "modified": 1618056492763,
-        "category": 3
+        "category": 1
     },
     "mincemeat":
     {
@@ -1647,7 +1622,7 @@
     "mint leaves":
     {
         "modified": 1676033246258,
-        "category": 1
+        "category": 0
     },
     "miso paste":
     {
@@ -1657,17 +1632,17 @@
     "mixed pulses":
     {
         "modified": 1581096496733,
-        "category": 1
+        "category": 10
     },
     "mixed seafood":
     {
         "modified": 1627654883822,
-        "category": 3
+        "category": 1
     },
     "mixed vegetables":
     {
         "modified": 1536505061617,
-        "category": 1
+        "category": 0
     },
     "molasses":
     {
@@ -1677,22 +1652,22 @@
     "monkfish loins":
     {
         "modified": 1661788027712,
-        "category": 3
+        "category": 1
     },
     "mortadella":
     {
         "modified": 1641055400602,
-        "category": 3
+        "category": 1
     },
     "mozzarella":
     {
         "modified": 1676625681653,
-        "category": 7
+        "category": 2
     },
     "mozzarella pearls":
     {
         "modified": 1596133579874,
-        "category": 7
+        "category": 2
     },
     "muffin tray":
     {
@@ -1712,7 +1687,7 @@
     "mushrooms":
     {
         "modified": 1673615585956,
-        "category": 1
+        "category": 0
     },
     "mustard powder":
     {
@@ -1727,7 +1702,7 @@
     "natural yoghurt":
     {
         "modified": 1658604165194,
-        "category": 7
+        "category": 2
     },
     "neapolitan pasta sauce":
     {
@@ -1737,7 +1712,7 @@
     "new potatoes":
     {
         "modified": 1668278427230,
-        "category": 1
+        "category": 0
     },
     "newspaper":
     {
@@ -1762,7 +1737,7 @@
     "noodles":
     {
         "modified": 1645131394066,
-        "category": 6
+        "category": 3
     },
     "nutmeg":
     {
@@ -1771,8 +1746,8 @@
     },
     "oat milk":
     {
-        "modified": 1677836505514,
-        "category": 7
+        "modified": 1718365765464,
+        "category": 2
     },
     "olive oil":
     {
@@ -1782,7 +1757,7 @@
     "olives":
     {
         "modified": 1670446639985,
-        "category": 1
+        "category": 0
     },
     "on":
     {
@@ -1792,7 +1767,7 @@
     "onion":
     {
         "modified": 1674824877618,
-        "category": 1
+        "category": 0
     },
     "onion powder":
     {
@@ -1804,35 +1779,25 @@
         "modified": 1518790331080,
         "category": 2
     },
-    "onions":
-    {
-        "modified": 1516824511658,
-        "category": 1
-    },
     "orange":
     {
         "modified": 1643121626059,
-        "category": 1
+        "category": 0
     },
     "orange juice":
     {
-        "modified": 1677836104160,
-        "category": 7
+        "modified": 1718365764072,
+        "category": 2
     },
     "orange pepper":
     {
         "modified": 1602430478838,
-        "category": 1
-    },
-    "oranges":
-    {
-        "modified": 1648153932744,
-        "category": 1
+        "category": 0
     },
     "orecchiette pasta":
     {
         "modified": 1621273520146,
-        "category": 6
+        "category": 3
     },
     "oregano":
     {
@@ -1842,7 +1807,7 @@
     "orzo":
     {
         "modified": 1663257892305,
-        "category": 6
+        "category": 3
     },
     "oven gloves":
     {
@@ -1859,29 +1824,24 @@
         "modified": 1595417713679,
         "category": 2
     },
-    "pak cchoi":
-    {
-        "modified": 1563002647516,
-        "category": 1
-    },
     "pak choi":
     {
         "modified": 1632564852629,
-        "category": 1
+        "category": 0
     },
     "pancetta":
     {
         "modified": 1652630311521,
-        "category": 3
+        "category": 1
     },
     "paneer":
     {
         "modified": 1519461685322,
-        "category": 7
+        "category": 2
     },
     "panko breadcrumbs":
     {
-        "modified": 1665747216524,
+        "modified": 1718365841191,
         "category": 2
     },
     "pappardelle":
@@ -1901,33 +1861,33 @@
     },
     "parmesan":
     {
-        "modified": 1676625679193,
+        "modified": 1718365742221,
         "category": 2
     },
     "parsley":
     {
         "modified": 1673010768229,
-        "category": 1
+        "category": 0
     },
     "parsnip":
     {
         "modified": 1638986857801,
-        "category": 1
+        "category": 0
     },
     "passata":
     {
         "modified": 1670446639987,
-        "category": 1
+        "category": 10
     },
     "pasta":
     {
-        "modified": 1677247621933,
-        "category": 6
+        "modified": 1718365858129,
+        "category": 3
     },
     "pasta salad":
     {
         "modified": 1661788027718,
-        "category": 7
+        "category": 2
     },
     "pasta sauce":
     {
@@ -1937,7 +1897,7 @@
     "peaches":
     {
         "modified": 1625635847927,
-        "category": 1
+        "category": 0
     },
     "peanut butter":
     {
@@ -1952,7 +1912,7 @@
     "pearl barley":
     {
         "modified": 1645131394069,
-        "category": 6
+        "category": 3
     },
     "pearl couscous":
     {
@@ -1962,17 +1922,17 @@
     "peas":
     {
         "modified": 1508908073980,
-        "category": 1
+        "category": 0
     },
     "pecans":
     {
         "modified": 1586447585528,
-        "category": 1
+        "category": 0
     },
     "pecorino romano":
     {
         "modified": 1615394476541,
-        "category": 7
+        "category": 2
     },
     "peeled tomatoes":
     {
@@ -1987,7 +1947,7 @@
     "penne":
     {
         "modified": 1655388740032,
-        "category": 6
+        "category": 3
     },
     "peppercorn":
     {
@@ -2007,12 +1967,12 @@
     "pepperoni":
     {
         "modified": 1595584917668,
-        "category": 3
+        "category": 1
     },
     "peppers in oil":
     {
         "modified": 1514812949775,
-        "category": 1
+        "category": 10
     },
     "peri peri sauce":
     {
@@ -2042,22 +2002,22 @@
     "pineapple":
     {
         "modified": 1567179054107,
-        "category": 1
+        "category": 0
     },
     "pineapple chunks":
     {
         "modified": 1670710261453,
-        "category": 1
+        "category": 0
     },
     "pineapple rings":
     {
         "modified": 1675431615245,
-        "category": 1
+        "category": 0
     },
     "pinto beans":
     {
         "modified": 1655653867584,
-        "category": 1
+        "category": 10
     },
     "pistachios":
     {
@@ -2092,22 +2052,22 @@
     "plasters":
     {
         "modified": 1677836169599,
-        "category": 4
+        "category": 5
     },
     "plum tomatoes":
     {
         "modified": 1670710261462,
-        "category": 1
+        "category": 0
     },
     "plums":
     {
         "modified": 1653652016528,
-        "category": 1
+        "category": 0
     },
     "pollock fillets":
     {
         "modified": 1660943072627,
-        "category": 3
+        "category": 1
     },
     "pomegranate molasses":
     {
@@ -2127,57 +2087,57 @@
     "porchini":
     {
         "modified": 1546614098984,
-        "category": 1
+        "category": 0
     },
     "pork belly":
     {
         "modified": 1664998802298,
-        "category": 3
+        "category": 1
     },
     "pork butt":
     {
         "modified": 1645794278896,
-        "category": 3
+        "category": 1
     },
     "pork chops":
     {
         "modified": 1617557644369,
-        "category": 3
+        "category": 1
     },
     "pork fillet":
     {
         "modified": 1591445386609,
-        "category": 3
+        "category": 1
     },
     "pork lardons":
     {
         "modified": 1597603780739,
-        "category": 3
+        "category": 1
     },
     "pork loin":
     {
         "modified": 1645131393996,
-        "category": 3
+        "category": 1
     },
     "pork medallions":
     {
         "modified": 1586294056823,
-        "category": 3
+        "category": 1
     },
     "pork shoulder":
     {
         "modified": 1621273520135,
-        "category": 3
+        "category": 1
     },
     "pork tenderloin":
     {
         "modified": 1670710261492,
-        "category": 3
+        "category": 1
     },
     "portobello mushrooms":
     {
         "modified": 1594311807368,
-        "category": 1
+        "category": 0
     },
     "potato flour":
     {
@@ -2187,27 +2147,27 @@
     "potato waffles":
     {
         "modified": 1590932647483,
-        "category": 7
+        "category": 11
     },
     "potato wedges":
     {
         "modified": 1621273520143,
-        "category": 7
+        "category": 11
     },
     "potatoes":
     {
         "modified": 1666857248704,
-        "category": 1
+        "category": 0
     },
     "prawns":
     {
         "modified": 1653660241519,
-        "category": 3
+        "category": 1
     },
     "preserved lemon":
     {
         "modified": 1515161013121,
-        "category": 1
+        "category": 10
     },
     "puf":
     {
@@ -2222,7 +2182,7 @@
     "puy lentils":
     {
         "modified": 1657463998595,
-        "category": 1
+        "category": 10
     },
     "quark":
     {
@@ -2237,7 +2197,7 @@
     "radish":
     {
         "modified": 1626877028033,
-        "category": 1
+        "category": 0
     },
     "raisins":
     {
@@ -2257,17 +2217,17 @@
     "red apple":
     {
         "modified": 1670710261444,
-        "category": 1
+        "category": 0
     },
     "red cabbage":
     {
         "modified": 1664998802223,
-        "category": 1
+        "category": 0
     },
     "red chillis":
     {
         "modified": 1665747216445,
-        "category": 1
+        "category": 0
     },
     "red lentils":
     {
@@ -2277,17 +2237,12 @@
     "red onion":
     {
         "modified": 1676033270586,
-        "category": 1
-    },
-    "red onions":
-    {
-        "modified": 1512743719627,
-        "category": 1
+        "category": 0
     },
     "red pepper":
     {
         "modified": 1677247405196,
-        "category": 1
+        "category": 0
     },
     "red pepper flakes":
     {
@@ -2322,22 +2277,22 @@
     "refried beans":
     {
         "modified": 1659733111406,
-        "category": 1
+        "category": 10
     },
     "ribs":
     {
         "modified": 1613728024909,
-        "category": 3
+        "category": 1
     },
     "rice":
     {
         "modified": 1527319576620,
-        "category": 6
+        "category": 3
     },
     "rice noodles":
     {
         "modified": 1616242955403,
-        "category": 6
+        "category": 3
     },
     "rice vinegar":
     {
@@ -2357,32 +2312,32 @@
     "ricotta":
     {
         "modified": 1672233231531,
-        "category": 7
+        "category": 2
     },
     "rigatoni":
     {
         "modified": 1658340557648,
-        "category": 6
+        "category": 3
     },
     "risotto rice":
     {
         "modified": 1574698993711,
-        "category": 6
+        "category": 3
     },
     "roasted red peppers":
     {
         "modified": 1602430478831,
-        "category": 1
+        "category": 10
     },
     "roasted tomatoes":
     {
         "modified": 1599124175121,
-        "category": 1
+        "category": 10
     },
     "rocket":
     {
         "modified": 1677247352776,
-        "category": 1
+        "category": 0
     },
     "rolled oats":
     {
@@ -2397,7 +2352,7 @@
     "root vegetables":
     {
         "modified": 1505062032663,
-        "category": 1
+        "category": 0
     },
     "rose harissa":
     {
@@ -2417,7 +2372,7 @@
     "rump steak":
     {
         "modified": 1530278887456,
-        "category": 3
+        "category": 1
     },
     "saffron":
     {
@@ -2437,7 +2392,7 @@
     "salmon":
     {
         "modified": 1666350411706,
-        "category": 3
+        "category": 1
     },
     "salsa":
     {
@@ -2452,7 +2407,7 @@
     "samphire":
     {
         "modified": 1592931783063,
-        "category": 1
+        "category": 0
     },
     "sandwich bags":
     {
@@ -2461,28 +2416,28 @@
     },
     "sandwich meat":
     {
-        "modified": 1677836062441,
-        "category": 3
+        "modified": 1718365673881,
+        "category": 1
     },
     "sardines":
     {
         "modified": 1630049483411,
-        "category": 3
+        "category": 1
     },
     "sausage":
     {
         "modified": 1666350411712,
-        "category": 3
+        "category": 1
     },
     "sausages":
     {
         "modified": 1634235225632,
-        "category": 3
+        "category": 1
     },
     "savoy cabbage":
     {
         "modified": 1582385467594,
-        "category": 1
+        "category": 0
     },
     "screen wash":
     {
@@ -2517,7 +2472,7 @@
     "shallots":
     {
         "modified": 1672155789837,
-        "category": 1
+        "category": 0
     },
     "shampoo":
     {
@@ -2537,7 +2492,7 @@
     "shiitake mushroom":
     {
         "modified": 1638986857816,
-        "category": 1
+        "category": 0
     },
     "shortcrust pastry":
     {
@@ -2557,12 +2512,12 @@
     "single cream":
     {
         "modified": 1631101095650,
-        "category": 7
+        "category": 2
     },
     "sirloin steak":
     {
         "modified": 1665747216573,
-        "category": 3
+        "category": 1
     },
     "skewers":
     {
@@ -2582,32 +2537,32 @@
     "smoked cheese":
     {
         "modified": 1636210684186,
-        "category": 7
+        "category": 2
     },
     "smoked fish":
     {
         "modified": 1481299553462,
-        "category": 3
+        "category": 1
     },
     "smoked haddock":
     {
         "modified": 1604845611229,
-        "category": 3
+        "category": 1
     },
     "smoked lardons":
     {
         "modified": 1631101095647,
-        "category": 3
+        "category": 1
     },
     "smoked salmon":
     {
         "modified": 1572194980257,
-        "category": 3
+        "category": 1
     },
     "smoothie":
     {
         "modified": 1493384987811,
-        "category": 7
+        "category": 2
     },
     "socks":
     {
@@ -2617,7 +2572,7 @@
     "soft cheese":
     {
         "modified": 1661788027721,
-        "category": 7
+        "category": 2
     },
     "soup":
     {
@@ -2627,7 +2582,7 @@
     "sour cream":
     {
         "modified": 1649354092174,
-        "category": 7
+        "category": 2
     },
     "sourdough bread":
     {
@@ -2642,17 +2597,17 @@
     "soy veggie ground":
     {
         "modified": 1651312064134,
-        "category": 3
+        "category": 1
     },
     "spaghetti":
     {
         "modified": 1659733111712,
-        "category": 6
+        "category": 3
     },
     "spanish onion":
     {
         "modified": 1649683977530,
-        "category": 1
+        "category": 0
     },
     "sparkling water":
     {
@@ -2661,8 +2616,8 @@
     },
     "spinach":
     {
-        "modified": 1677247354603,
-        "category": 1
+        "modified": 1718365593043,
+        "category": 0
     },
     "sponges":
     {
@@ -2672,22 +2627,22 @@
     "spring greens":
     {
         "modified": 1647605509648,
-        "category": 1
+        "category": 0
     },
     "spring onions":
     {
         "modified": 1667292253308,
-        "category": 1
+        "category": 0
     },
     "spring vegetables":
     {
         "modified": 1570033477649,
-        "category": 1
+        "category": 0
     },
     "squash":
     {
         "modified": 1524931536999,
-        "category": 1
+        "category": 0
     },
     "squeegee":
     {
@@ -2702,12 +2657,12 @@
     "steak":
     {
         "modified": 1524931537141,
-        "category": 3
+        "category": 1
     },
     "stewing beef":
     {
         "modified": 1609363775069,
-        "category": 3
+        "category": 1
     },
     "stick on light":
     {
@@ -2717,12 +2672,12 @@
     "stilton":
     {
         "modified": 1634235225643,
-        "category": 7
+        "category": 2
     },
     "stir fry veg":
     {
         "modified": 1563002647512,
-        "category": 1
+        "category": 0
     },
     "sub rolls":
     {
@@ -2732,7 +2687,7 @@
     "sugar snap peas":
     {
         "modified": 1666350411669,
-        "category": 1
+        "category": 0
     },
     "sultanas":
     {
@@ -2757,7 +2712,7 @@
     "swede":
     {
         "modified": 1577648022017,
-        "category": 1
+        "category": 0
     },
     "sweet chilli sauce":
     {
@@ -2767,22 +2722,22 @@
     "sweet pepper":
     {
         "modified": 1649683977536,
-        "category": 1
+        "category": 0
     },
     "sweet potato":
     {
         "modified": 1677835960881,
-        "category": 1
+        "category": 0
     },
     "sweet potato chips":
     {
         "modified": 1570266834262,
-        "category": 1
+        "category": 11
     },
     "sweetcorn":
     {
         "modified": 1677247638351,
-        "category": 6
+        "category": 10
     },
     "taco seasoning":
     {
@@ -2797,7 +2752,7 @@
     "tagliatelle":
     {
         "modified": 1672155789878,
-        "category": 6
+        "category": 3
     },
     "tahini":
     {
@@ -2837,7 +2792,7 @@
     "thick cut ham":
     {
         "modified": 1634827479828,
-        "category": 3
+        "category": 1
     },
     "thyme":
     {
@@ -2862,7 +2817,7 @@
     "tomatillos":
     {
         "modified": 1488543990552,
-        "category": 1
+        "category": 0
     },
     "tomato and vegetable sauce":
     {
@@ -2887,7 +2842,7 @@
     "tomatoes":
     {
         "modified": 1674219255621,
-        "category": 1
+        "category": 0
     },
     "tongs":
     {
@@ -2902,7 +2857,7 @@
     "tortellini":
     {
         "modified": 1595584917675,
-        "category": 6
+        "category": 3
     },
     "tortillas":
     {
@@ -2917,7 +2872,7 @@
     "tuna":
     {
         "modified": 1674219803879,
-        "category": 3
+        "category": 1
     },
     "tupperware":
     {
@@ -2927,7 +2882,7 @@
     "turkey":
     {
         "modified": 1483708444798,
-        "category": 3
+        "category": 1
     },
     "turmeric":
     {
@@ -2937,7 +2892,7 @@
     "turnip":
     {
         "modified": 1557467099848,
-        "category": 1
+        "category": 0
     },
     "tweezers":
     {
@@ -2947,7 +2902,7 @@
     "unsalted butter":
     {
         "modified": 1641414586803,
-        "category": 7
+        "category": 2
     },
     "vegetable oil":
     {
@@ -2962,22 +2917,22 @@
     "veggie mince":
     {
         "modified": 1637172774093,
-        "category": 3
+        "category": 1
     },
     "vermicelli":
     {
         "modified": 1668278427284,
-        "category": 6
+        "category": 3
     },
     "vialone nano rice":
     {
         "modified": 1652981804257,
-        "category": 6
+        "category": 3
     },
     "vine tomatoes":
     {
         "modified": 1653660241503,
-        "category": 1
+        "category": 0
     },
     "washing tablets":
     {
@@ -3012,7 +2967,7 @@
     "white cabbage":
     {
         "modified": 1496943044191,
-        "category": 1
+        "category": 0
     },
     "white chocolate":
     {
@@ -3027,7 +2982,7 @@
     "white fish fillets":
     {
         "modified": 1643121626120,
-        "category": 3
+        "category": 1
     },
     "white pepper":
     {
@@ -3057,12 +3012,12 @@
     "whole cooked chicken":
     {
         "modified": 1632410651558,
-        "category": 3
+        "category": 1
     },
     "whole milk":
     {
         "modified": 1641055400621,
-        "category": 7
+        "category": 2
     },
     "wholegrain mustard":
     {
@@ -3077,7 +3032,7 @@
     "wild rice":
     {
         "modified": 1547887082747,
-        "category": 6
+        "category": 3
     },
     "wire rack":
     {
@@ -3097,7 +3052,7 @@
     "yellow pepper":
     {
         "modified": 1616242955359,
-        "category": 1
+        "category": 0
     },
     "yellow split peas":
     {
@@ -3107,7 +3062,7 @@
     "yogurt":
     {
         "modified": 1674219595371,
-        "category": 7
+        "category": 2
     },
     "za'atar":
     {
@@ -3127,42 +3082,32 @@
     "coconut yoghurt":
     {
         "modified": 1674825115293,
-        "category": 7
+        "category": 2
     },
     "udon noodles":
     {
         "modified": 1675431091635,
-        "category": 6
+        "category": 3
     },
     "frozen edamame":
     {
         "modified": 1675431614934,
-        "category": 7
+        "category": 11
     },
     "chicken sausages":
     {
         "modified": 1676033441141,
-        "category": 3
-    },
-    "lu":
-    {
-        "modified": 1676625410680,
-        "category": 9
+        "category": 1
     },
     "italian sausage":
     {
         "modified": 1676625642634,
-        "category": 3
+        "category": 1
     },
     "pizza dough":
     {
         "modified": 1676626178485,
         "category": 2
-    },
-    "lun":
-    {
-        "modified": 1677098754270,
-        "category": 9
     },
     "walnuts":
     {
@@ -3183,5 +3128,10 @@
     {
         "modified": 1677836784130,
         "category": 6
+    },
+    "bacon lardons":
+    {
+        "modified": 1718365674069,
+        "category": 1
     }
 }
