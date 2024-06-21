@@ -6,7 +6,7 @@
             "units": "",
             "quantity": "",
             "notes": "",
-            "category": "Refrigerated & Frozen",
+            "category": "Refrigerated",
             "done": false
         },
         {
@@ -14,7 +14,7 @@
             "units": "",
             "quantity": "",
             "notes": "",
-            "category": "Refrigerated & Frozen",
+            "category": "Refrigerated",
             "done": false
         }
     ],
@@ -41,7 +41,7 @@
             "units": "",
             "quantity": "",
             "notes": "",
-            "category": "Fruits & Vegetables",
+            "category": "Fresh Fruits & Vegetables",
             "done": false
         },
         {

@@ -10,19 +10,19 @@ const ITEM_PATTERN =
   /(?<quantity>[\d\.]+\s)?(?<unit>(g|G|kg|Kg|ml|Ml|l|L)\s)?(?<name>.*)/;
 
 const categoryInfo = {
-  "Fresh Fruits & Vegetables": { color: "#98971a", id: 0 },
-  "Meat & Fish": { color: "#cc241d", id: 1 },
-  "Refrigerated": { color: "#458588", id: 2 },
-  "Rice & Pasta": { color: "#458588", id: 3 },
-  "Dried, Canned, Jarred": { color: "#98971a", id: 4 },
-  "Medicine": { color: "#689d6a", id: 5 },
-  "Ingredients & Spices": { color: "#d79921", id: 6 },
-  "Other Food Items": { color: "#83a598", id: 7 },
-  "Snacks & Beverages": { color: "#b16286", id: 8 },
-  "Bread & Pastries": { color: "#b17744", id: 9 },
-  "Frozen": { color: "#458588", id: 10 },
-  "Non-Food Items": { color: "#d65d0e", id: 11 },
-  "Uncategorized": { color: "#a89984", id: 12 },  
+  "Fresh Fruits & Vegetables": { colour: "#98971a", id: 0 },
+  "Meat & Fish": { colour: "#cc241d", id: 1 },
+  "Refrigerated": { colour: "#98971a", id: 2 },
+  "Rice & Pasta": { colour: "#d65d0e", id: 3 },
+  "Dried, Canned, Jarred": { colour: "#d79921", id: 4 },
+  "Medicine": { colour: "#689d6a", id: 5 },
+  "Ingredients & Spices": { colour: "#d79921", id: 6 },
+  "Other Food Items": { colour: "#83a598", id: 7 },
+  "Snacks & Beverages": { colour: "#b16286", id: 8 },
+  "Bread & Pastries": { colour: "#b17744", id: 9 },
+  "Frozen": { colour: "#cc241d", id: 10 },
+  "Non-Food Items": { colour: "#d79921", id: 11 },
+  "Uncategorized": { colour: "#a89984", id: 12 },  
 };
 /**
  * Get ID for given category
@@ -106,18 +106,19 @@ function populateList() {
   let listEl = document.querySelector("#list");
   listEl.replaceChildren();
 
+
   let categories: Set<string> = new Set(
     shoppingList.currentList.map((i) => i.category)
   );
-  let sorted_categories = Array.from(categories).sort();
+  let active_categories = Object.keys(categoryInfo).filter(k => categories.has(k))
 
-  for (const category of sorted_categories) {
+  for (const category of active_categories) {
+    let colour = categoryInfo[category].colour;
     // Create heading and ul
     let h2 = document.createElement("h2");
     h2.innerText = category;
-    h2.classList.add(
-      category.toLowerCase().replaceAll(" & ", "-").replaceAll(" ", "-")
-    );
+    h2.classList.add("header");
+    h2.setAttribute("style", `--colour: ${colour}`)
     listEl.appendChild(h2);
 
     let ul = document.createElement("ul");
@@ -158,8 +159,8 @@ class ListItem extends HTMLLIElement {
     table.appendChild(tr);
 
     let td_left = document.createElement("td");
-    let color = categoryInfo[this.data.category].color;
-    let svg = createSVG(this.data.item.slice(0, 1).toUpperCase(), color);
+    let colour = categoryInfo[this.data.category].colour;
+    let svg = createSVG(this.data.item.slice(0, 1).toUpperCase(), colour);
     svg.addEventListener("click", this.done.bind(this));
     td_left.appendChild(svg);
     tr.appendChild(td_left);
@@ -184,7 +185,7 @@ class ListItem extends HTMLLIElement {
     let td_right = document.createElement("td");
     tr.appendChild(td_right);
     let delete_button = document.createElement("button");
-    delete_button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="${color}" style="scale: 1.3"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/></svg>`;
+    delete_button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="${colour}" style="scale: 1.3"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/></svg>`;
     delete_button.addEventListener("click", this.done.bind(this));
     td_right.appendChild(delete_button);
 
@@ -380,8 +381,8 @@ class SuggestedItem extends HTMLLIElement {
 
     let td_left = document.createElement("td");
     td_left.classList.add("suggestion-icon");
-    let color = categoryInfo[this.category].color;
-    let svg = createSVG("", color);
+    let colour = categoryInfo[this.category].colour;
+    let svg = createSVG("", colour);
     td_left.appendChild(svg);
     tr.appendChild(td_left);
 
