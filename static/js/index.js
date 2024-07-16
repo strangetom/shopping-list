@@ -8,7 +8,7 @@ const ITEM_PATTERN = /(?<quantity>[\d\.]+\s)?(?<unit>(g|G|kg|Kg|ml|Ml|l|L)\s)?(?
 const categoryInfo = {
     "Fresh Fruits & Vegetables": { colour: "#98971a", id: 0 },
     "Meat & Fish": { colour: "#cc241d", id: 1 },
-    "Refrigerated": { colour: "#98971a", id: 2 },
+    "Refrigerated": { colour: "#83a598", id: 2 },
     "Rice & Pasta": { colour: "#d65d0e", id: 3 },
     "Dried, Canned, Jarred": { colour: "#d79921", id: 4 },
     "Medicine": { colour: "#689d6a", id: 5 },
@@ -16,7 +16,7 @@ const categoryInfo = {
     "Other Food Items": { colour: "#83a598", id: 7 },
     "Snacks & Beverages": { colour: "#b16286", id: 8 },
     "Bread & Pastries": { colour: "#b17744", id: 9 },
-    "Frozen": { colour: "#cc241d", id: 10 },
+    "Frozen": { colour: "#83a598", id: 10 },
     "Non-Food Items": { colour: "#d79921", id: 11 },
     "Uncategorized": { colour: "#a89984", id: 12 },
 };
