@@ -6,6 +6,9 @@ var shoppingList;
 var CATALOG = new Catalog();
 var BUNDLES = new Bundles();
 
+// Create a reference for the wake lock so we can release it later
+var wakelock = null;
+
 const ITEM_PATTERN =
   /(?<quantity>[\d\.]+\s)?(?<unit>(g|G|kg|Kg|ml|Ml|l|L)\s)?(?<name>.*)/;
 
@@ -61,6 +64,31 @@ document.addEventListener("DOMContentLoaded", () => {
   shoppingList.purgeDone();
   populateList();
 
+  // Open settings dialog when clicking settings button
+  let settingsBtn: HTMLButtonElement = document.querySelector("#settings");
+  let settingsModal: HTMLDialogElement = document.querySelector("#settings-dialog");
+  settingsBtn.addEventListener("click", () => {
+    settingsModal.showModal();
+  });
+  // Add item when new item dialog closed, unless background was clicked
+  let closeSettingsBtn = settingsModal.querySelector("button[value='submit']");
+  closeSettingsBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    let animation = settingsModal.animate(hideDialogAnimation, hideDialogTiming);
+    animation.addEventListener("finish", () => {
+      settingsModal.close("submit");
+    });
+  });
+  settingsModal.addEventListener("click", (event) => {
+    if ((event.target as HTMLElement).nodeName === "DIALOG") {
+      let animation = settingsModal.animate(hideDialogAnimation, hideDialogTiming);
+      animation.addEventListener("finish", () => {
+        settingsModal.close("cancel");
+      });
+    }
+  });
+
+
   // Open new item dialog when clicking FAB
   let addBtn: HTMLButtonElement = document.querySelector("#fab");
   let addModal: HTMLDialogElement = document.querySelector("#new-item-dialog");
@@ -97,6 +125,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let downloadBtn: HTMLButtonElement =
     document.querySelector("#download-catalog");
   downloadBtn.addEventListener("click", downloadCatalog);
+
+  // If Screen Wake Lock API is supported, show checkbox to enable it and add event listener to toggle
+  if ("wakeLock" in navigator) {
+    // Toggle wakelock when clicking keep awake button
+    let keepAwakeBtn: HTMLButtonElement = document.querySelector("#wakelock");
+    keepAwakeBtn.disabled = false;
+    keepAwakeBtn.addEventListener("click", toggleWakeLock);
+  }
 });
 
 /**
@@ -668,6 +704,25 @@ function validateUnit(unit: string) {
   }
 
   return unit
+}
+
+/**
+ * Toggle wakelock when button is pressed
+ */
+async function toggleWakeLock() {
+  let keepAwakeBtn: HTMLButtonElement = document.querySelector("#wakelock");
+  if (wakelock == null) {
+    try {
+      wakelock = await navigator.wakeLock.request("screen");
+      keepAwakeBtn.querySelector("img").src = "./static/img/display-fill.svg";
+    } catch (err) {
+      console.log(`Wakelock failed: ${err.message}`);
+    }
+  } else {
+    // Release wakelock and set variable back to null
+    wakelock.release().then(() => (wakelock = null));
+    keepAwakeBtn.querySelector("img").src = "./static/img/display.svg";
+  }
 }
 
 /**

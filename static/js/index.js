@@ -4,6 +4,7 @@ import { Bundles } from "./module-bundles.js";
 var shoppingList;
 var CATALOG = new Catalog();
 var BUNDLES = new Bundles();
+var wakelock = null;
 const ITEM_PATTERN = /(?<quantity>[\d\.]+\s)?(?<unit>(g|G|kg|Kg|ml|Ml|l|L)\s)?(?<name>.*)/;
 const categoryInfo = {
     "Fresh Fruits & Vegetables": { colour: "#98971a", id: 0 },
@@ -45,6 +46,27 @@ document.addEventListener("DOMContentLoaded", () => {
     shoppingList = new ShoppingList();
     shoppingList.purgeDone();
     populateList();
+    let settingsBtn = document.querySelector("#settings");
+    let settingsModal = document.querySelector("#settings-dialog");
+    settingsBtn.addEventListener("click", () => {
+        settingsModal.showModal();
+    });
+    let closeSettingsBtn = settingsModal.querySelector("button[value='submit']");
+    closeSettingsBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        let animation = settingsModal.animate(hideDialogAnimation, hideDialogTiming);
+        animation.addEventListener("finish", () => {
+            settingsModal.close("submit");
+        });
+    });
+    settingsModal.addEventListener("click", (event) => {
+        if (event.target.nodeName === "DIALOG") {
+            let animation = settingsModal.animate(hideDialogAnimation, hideDialogTiming);
+            animation.addEventListener("finish", () => {
+                settingsModal.close("cancel");
+            });
+        }
+    });
     let addBtn = document.querySelector("#fab");
     let addModal = document.querySelector("#new-item-dialog");
     addBtn.addEventListener("click", () => {
@@ -73,6 +95,11 @@ document.addEventListener("DOMContentLoaded", () => {
     addItemInput.addEventListener("input", suggestItems);
     let downloadBtn = document.querySelector("#download-catalog");
     downloadBtn.addEventListener("click", downloadCatalog);
+    if ("wakeLock" in navigator) {
+        let keepAwakeBtn = document.querySelector("#wakelock");
+        keepAwakeBtn.disabled = false;
+        keepAwakeBtn.addEventListener("click", toggleWakeLock);
+    }
 });
 function populateList() {
     let listEl = document.querySelector("#list");
@@ -487,6 +514,22 @@ function validateUnit(unit) {
         return "L";
     }
     return unit;
+}
+async function toggleWakeLock() {
+    let keepAwakeBtn = document.querySelector("#wakelock");
+    if (wakelock == null) {
+        try {
+            wakelock = await navigator.wakeLock.request("screen");
+            keepAwakeBtn.querySelector("img").src = "./static/img/display-fill.svg";
+        }
+        catch (err) {
+            console.log(`Wakelock failed: ${err.message}`);
+        }
+    }
+    else {
+        wakelock.release().then(() => (wakelock = null));
+        keepAwakeBtn.querySelector("img").src = "./static/img/display.svg";
+    }
 }
 function installServiceWorker() {
     if ("serviceWorker" in navigator) {

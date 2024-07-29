@@ -16,8 +16,8 @@
 
         <section id="header">
             <h1>Shopping List</h1>
-            <button type="button" id="download-catalog">
-                <img src="./static/img/download.svg" alt="Download catalog">
+            <button type="button" id="settings">
+                <img src="./static/img/settings.svg" alt="Open settings">
             </button>
         </section>
 
@@ -97,6 +97,28 @@
                     <button type="submit" value="submit">+</button>
                 </div>
                 <ul id="suggestions"></ul>
+            </form>
+        </dialog>
+
+        <dialog id="settings-dialog">
+            <form method="dialog">
+                <div class="setting-btns">
+                    <button type="button" class="setting-btn" id="upload-catalog">
+                        <img src="./static/img/upload.svg" alt="Upload catalog">
+                        Upload catalog
+                    </button>
+                    <button type="button" class="setting-btn" id="download-catalog">
+                        <img src="./static/img/download.svg" alt="Download catalog">
+                        Download catalog
+                    </button>
+                    <button type="button" class="setting-btn" id="wakelock" disabled>
+                        <img src="./static/img/display.svg" alt="Keep awake">
+                        Keep awake
+                    </button>
+                </div>
+                <div class="buttons">
+                    <button type="submit" value="submit">Close</button>
+                </div>
             </form>
         </dialog>
 
