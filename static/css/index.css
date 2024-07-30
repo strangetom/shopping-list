@@ -93,6 +93,15 @@ h1 {
   margin-top: 4rem;
 }
 h2 {
+  font-weight: normal;
+  margin: 0;
+  padding: .5rem;
+  font-size: .8rem;
+  background-color: var(--bg);
+  border-top: 1px solid var(--bg-2);
+  background-image: url("/static/img/page-bg-dark.svg");
+}
+h3 {
   margin: .25rem .5rem;
 }
 ul {
