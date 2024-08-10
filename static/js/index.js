@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
     });
-    let addBtn = document.querySelector("#fab");
+    let addBtn = document.querySelector("#add");
     let addModal = document.querySelector("#new-item-dialog");
     addBtn.addEventListener("click", () => {
         addModal.querySelector("#name").value = "";
@@ -93,6 +93,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     let addItemInput = addModal.querySelector("#name");
     addItemInput.addEventListener("input", suggestItems);
+    let clearBtn = document.querySelector("#clear");
+    clearBtn.addEventListener("click", () => {
+        shoppingList.purgeDone();
+        populateList();
+    });
     let downloadBtn = document.querySelector("#download-catalog");
     downloadBtn.addEventListener("click", downloadCatalog);
     if ("wakeLock" in navigator) {

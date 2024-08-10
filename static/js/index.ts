@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // Open new item dialog when clicking FAB
-  let addBtn: HTMLButtonElement = document.querySelector("#fab");
+  let addBtn: HTMLButtonElement = document.querySelector("#add");
   let addModal: HTMLDialogElement = document.querySelector("#new-item-dialog");
   addBtn.addEventListener("click", () => {
     (addModal.querySelector("#name") as HTMLInputElement).value = "";
@@ -120,6 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // On typing in new item dialog, display suggestions based on text typed
   let addItemInput = addModal.querySelector("#name");
   addItemInput.addEventListener("input", suggestItems);
+
+  let clearBtn: HTMLButtonElement = document.querySelector("#clear");
+  clearBtn.addEventListener("click", () => {
+      shoppingList.purgeDone();
+      populateList();
+  });
 
   // Download json catalog when clicking download button
   let downloadBtn: HTMLButtonElement =
