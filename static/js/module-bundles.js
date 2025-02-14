@@ -1,4 +1,5 @@
 export class Bundles {
+    bundles;
     constructor() {
         let existingBundles = localStorage.getItem("bundles");
         if (existingBundles != null) {

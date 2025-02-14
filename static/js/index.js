@@ -101,9 +101,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let downloadBtn = document.querySelector("#download-catalog");
     downloadBtn.addEventListener("click", downloadCatalog);
     if ("wakeLock" in navigator) {
-        let keepAwakeBtn = document.querySelector("#wakelock");
-        keepAwakeBtn.disabled = false;
-        keepAwakeBtn.addEventListener("click", toggleWakeLock);
+        if (wakelock == null) {
+            try {
+                wakelock = navigator.wakeLock.request("screen");
+            }
+            catch (err) {
+                console.log(`Wakelock failed: ${err.message}`);
+            }
+        }
     }
 });
 function populateList() {
@@ -132,6 +137,8 @@ function populateList() {
     }
 }
 class ListItem extends HTMLLIElement {
+    data;
+    index;
     constructor(data, index) {
         super();
         this.data = data;
@@ -277,6 +284,9 @@ class ListItem extends HTMLLIElement {
     }
 }
 class SuggestedItem extends HTMLLIElement {
+    category;
+    item;
+    time;
     constructor(item, time, categoryId) {
         super();
         this.item = item;
@@ -378,6 +388,7 @@ class SuggestedItem extends HTMLLIElement {
     }
 }
 class SuggestedBundle extends HTMLLIElement {
+    bundle;
     constructor(bundle) {
         super();
         this.bundle = bundle;
@@ -519,22 +530,6 @@ function validateUnit(unit) {
         return "L";
     }
     return unit;
-}
-async function toggleWakeLock() {
-    let keepAwakeBtn = document.querySelector("#wakelock");
-    if (wakelock == null) {
-        try {
-            wakelock = await navigator.wakeLock.request("screen");
-            keepAwakeBtn.querySelector("img").src = "./static/img/display-fill.svg";
-        }
-        catch (err) {
-            console.log(`Wakelock failed: ${err.message}`);
-        }
-    }
-    else {
-        wakelock.release().then(() => (wakelock = null));
-        keepAwakeBtn.querySelector("img").src = "./static/img/display.svg";
-    }
 }
 function installServiceWorker() {
     if ("serviceWorker" in navigator) {

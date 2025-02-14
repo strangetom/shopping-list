@@ -1,4 +1,5 @@
 export class Catalog {
+    catalog;
     constructor() {
         let existingCatalog = localStorage.getItem("catalog");
         if (existingCatalog != null) {

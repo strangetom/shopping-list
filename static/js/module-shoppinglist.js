@@ -1,4 +1,5 @@
 export class ShoppingList {
+    currentList;
     constructor() {
         let storedList = localStorage.getItem("currentList");
         if (storedList != null) {

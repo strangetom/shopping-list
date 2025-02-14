@@ -132,12 +132,15 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#download-catalog");
   downloadBtn.addEventListener("click", downloadCatalog);
 
-  // If Screen Wake Lock API is supported, show checkbox to enable it and add event listener to toggle
+  // If Screen Wake Lock API is supported, grab wakelock
   if ("wakeLock" in navigator) {
-    // Toggle wakelock when clicking keep awake button
-    let keepAwakeBtn: HTMLButtonElement = document.querySelector("#wakelock");
-    keepAwakeBtn.disabled = false;
-    keepAwakeBtn.addEventListener("click", toggleWakeLock);
+    if (wakelock == null) {
+      try {
+        wakelock = navigator.wakeLock.request("screen");
+      } catch (err) {
+        console.log(`Wakelock failed: ${err.message}`);
+      }
+    }
   }
 });
 
@@ -710,25 +713,6 @@ function validateUnit(unit: string) {
   }
 
   return unit
-}
-
-/**
- * Toggle wakelock when button is pressed
- */
-async function toggleWakeLock() {
-  let keepAwakeBtn: HTMLButtonElement = document.querySelector("#wakelock");
-  if (wakelock == null) {
-    try {
-      wakelock = await navigator.wakeLock.request("screen");
-      keepAwakeBtn.querySelector("img").src = "./static/img/display-fill.svg";
-    } catch (err) {
-      console.log(`Wakelock failed: ${err.message}`);
-    }
-  } else {
-    // Release wakelock and set variable back to null
-    wakelock.release().then(() => (wakelock = null));
-    keepAwakeBtn.querySelector("img").src = "./static/img/display.svg";
-  }
 }
 
 /**
