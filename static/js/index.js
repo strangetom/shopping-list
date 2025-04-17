@@ -415,6 +415,7 @@ class SuggestedBundle extends HTMLLIElement {
 }
 function titleCase(text) {
     let str = text
+        .trim()
         .toLowerCase()
         .split(" ")
         .map((word) => {
@@ -425,7 +426,7 @@ function titleCase(text) {
 function addNewItem() {
     let addModal = document.querySelector("#new-item-dialog");
     if (addModal.returnValue == "submit") {
-        let name = addModal.querySelector("#name").value;
+        let name = addModal.querySelector("#name").value.trim();
         let regexParts = ITEM_PATTERN.exec(name);
         let quantity = regexParts.groups.quantity || "";
         let units = regexParts.groups.unit || "";

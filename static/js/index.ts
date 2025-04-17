@@ -536,6 +536,7 @@ class SuggestedBundle extends HTMLLIElement {
  */
 function titleCase(text: string) {
   let str = text
+    .trim()
     .toLowerCase()
     .split(" ")
     .map((word) => {
@@ -550,7 +551,7 @@ function titleCase(text: string) {
 function addNewItem() {
   let addModal: HTMLDialogElement = document.querySelector("#new-item-dialog");
   if (addModal.returnValue == "submit") {
-    let name = (addModal.querySelector("#name") as HTMLInputElement).value;
+    let name = (addModal.querySelector("#name") as HTMLInputElement).value.trim();
     let regexParts = ITEM_PATTERN.exec(name);
 
     let quantity = regexParts.groups.quantity || ""
