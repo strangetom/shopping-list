@@ -587,7 +587,7 @@ function suggestItems(event: Event) {
     "#suggestions"
   ) as HTMLUListElement;
   suggestiondEl.replaceChildren();
-  let fragment = (event.target as HTMLInputElement).value;
+  let fragment = (event.target as HTMLInputElement).value.trim();
 
   let regexParts = ITEM_PATTERN.exec(fragment);
   if (regexParts.groups.name != "") {

@@ -449,7 +449,7 @@ function addNewItem() {
 function suggestItems(event) {
     let suggestiondEl = document.querySelector("#suggestions");
     suggestiondEl.replaceChildren();
-    let fragment = event.target.value;
+    let fragment = event.target.value.trim();
     let regexParts = ITEM_PATTERN.exec(fragment);
     if (regexParts.groups.name != "") {
         let bundles = BUNDLES.suggest(regexParts.groups.name);
